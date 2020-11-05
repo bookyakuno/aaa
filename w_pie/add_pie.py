@@ -24,6 +24,13 @@ class add_node(bpy.types.Menu):
 
 
     def draw(self, context):
+        """
+        Draw the menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
 #4 - LEFT
@@ -92,6 +99,13 @@ class add_nurbs_curves(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the visualization.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         bpy.ops.curve.primitive_nurbs_path_add()
@@ -113,6 +127,13 @@ class VIEW3D_PIE_Add_Mesh(Menu):
     bl_label = "Add Mesh"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
 
@@ -131,6 +152,13 @@ class VIEW3D_PIE_Add_Curve(Menu):
     bl_label = "Add Curve"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
 
@@ -150,6 +178,13 @@ class VIEW3D_PIE_Add_Lamp(Menu):
     bl_label = "Add Lamp"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
 
@@ -167,6 +202,13 @@ class VIEW3D_PIE_Add_Surface(Menu):
     bl_label = "Add Lamp"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
 
@@ -185,6 +227,13 @@ class VIEW3D_PIE_Add_MetaBall(Menu):
     bl_label = "Add MetaBall"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
 
@@ -202,6 +251,13 @@ class VIEW3D_PIE_Add_ForceField(Menu):
     bl_label = "Add Force Field"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         layout.operator("object.effector_add", text="Force", icon='FORCE_FORCE').type='FORCE'
@@ -228,6 +284,13 @@ class VIEW3D_PIE_Add_Other(Menu):
     bl_label = "Add Other"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
 
@@ -260,6 +323,13 @@ class VIEW3D_PIE_Add_Menu(Menu):
 
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
 
@@ -294,6 +364,11 @@ class VIEW3D_PIE_Add_Menu(Menu):
 addon_keymaps = []
 
 def register():
+    """
+    Register a new addon.
+
+    Args:
+    """
     # print("starting to register")
     # bpy.utils.unregister_class(add_node)
     # bpy.utils.register_class(add_nurbs_curves)
@@ -427,6 +502,11 @@ def register():
 
 # Register / Unregister Classes
 def unregister():
+    """
+    Unregisters the module.
+
+    Args:
+    """
     bpy.utils.unregister_class(w_pie_Prefs)
     bpy.utils.unregister_module(__name__)
 

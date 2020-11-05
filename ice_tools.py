@@ -16,6 +16,15 @@ import bmesh
 from bpy.props import *
 
 def add_mod(mod, link, meth, offset):
+    """
+    Add a modbus modulus context.
+
+    Args:
+        mod: (todo): write your description
+        link: (str): write your description
+        meth: (str): write your description
+        offset: (float): write your description
+    """
 	md = bpy.context.active_object.modifiers.new(mod, 'SHRINKWRAP')
 	# md.target = bpy.data.objects[link]
 	md.target = bpy.context.scene.sw_target
@@ -33,6 +42,14 @@ def add_mod(mod, link, meth, offset):
 
 
 def sw_clipping(obj, autoclip, clipcenter):
+    """
+    Sw_clipping of ) of a mesh.
+
+    Args:
+        obj: (todo): write your description
+        autoclip: (todo): write your description
+        clipcenter: (int): write your description
+    """
 	o = bpy.data.objects[obj]
 
 	if "Mirror" in bpy.data.objects[obj].modifiers:
@@ -51,6 +68,16 @@ def sw_clipping(obj, autoclip, clipcenter):
 
 
 def sw_Update(meshlink, wrap_offset, wrap_meth, autoclip, clipcenter):
+    """
+    Sw_methlink () function )
+
+    Args:
+        meshlink: (todo): write your description
+        wrap_offset: (int): write your description
+        wrap_meth: (str): write your description
+        autoclip: (todo): write your description
+        clipcenter: (todo): write your description
+    """
 	activeObj = bpy.context.active_object
 	scn = bpy.context.scene
 	oldmod = activeObj.mode
@@ -135,9 +162,23 @@ class SetUpRetopoMesh(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll for the active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None and context.active_object.mode == 'OBJECT' or context.active_object.mode == 'SCULPT'
 
 	def execute(self, context):
+     """
+     Executes the view
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		scn = context.scene
 		oldObj = bpy.context.view_layer.objects.active.name
 
@@ -207,9 +248,23 @@ class ShrinkUpdate(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll the number of the given context.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None
 
 	def execute(self, context):
+     """
+     Execute the group objects in context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		activeObj = context.active_object
 		scn = context.scene
 
@@ -252,9 +307,23 @@ class FreezeVerts(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None and context.active_object.mode == 'EDIT'
 
 	def execute(self, context):
+     """
+     Execute all the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		activeObj = bpy.context.active_object
 
 		if "retopo_suppo_frozen" in bpy.context.active_object.vertex_groups:
@@ -276,9 +345,23 @@ class ThawFrozenVerts(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None and context.active_object.mode == 'EDIT'
 
 	def execute(self, context):
+     """
+     Execute this context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		activeObj = bpy.context.active_object
 
 		if "retopo_suppo_frozen" in bpy.context.active_object.vertex_groups:
@@ -295,9 +378,23 @@ class set_target_active(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll the number of the given context.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None
 
 	def execute(self, context):
+     """
+     Executes the active scene.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		activeObj = bpy.context.active_object
 		bpy.context.scene.sw_target = activeObj
 		return {'FINISHED'}
@@ -310,9 +407,23 @@ class ShowFrozenVerts(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None and context.active_object.mode == 'EDIT'
 
 	def execute(self, context):
+     """
+     Execute all the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		activeObj = bpy.context.active_object
 
 		if "retopo_suppo_frozen" in bpy.context.active_object.vertex_groups:
@@ -333,6 +444,13 @@ class RetopoSupport(bpy.types.Panel):
 	bl_category = 'Sculpt'
 
 	def draw(self, context):
+     """
+     Draw the layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		scn = context.scene
 
@@ -409,6 +527,11 @@ set_target_active,
 }
 
 def register():
+    """
+    Registers the registration classes.
+
+    Args:
+    """
 	# bpy.utils.register_module(__name__)
 	for cls in classes:
 		bpy.utils.register_class(cls)
@@ -430,6 +553,11 @@ def register():
 	bpy.types.Scene.sw_autoapply = BoolProperty(default=True)
 
 def unregister():
+    """
+    Unregisters all classes.
+
+    Args:
+    """
 	# bpy.utils.unregister_module(__name__)
 	for cls in classes:
 		bpy.utils.unregister_class(cls)

@@ -54,6 +54,13 @@ class KeymapSetMenuPrefsz(bpy.types.AddonPreferences):
     bpy.types.Scene.angle_select_click_threshold = bpy.props.FloatProperty(default= 30, min= 0.01, max= 180, description="Angle")
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         layout.label(
@@ -89,6 +96,13 @@ class angle_select_click(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         obj = context.object
         bm = bmesh.from_edit_mesh(obj.data)
 
@@ -146,6 +160,13 @@ class angle_select_click_extend(bpy.types.Operator):
 
 
     def execute(self, context):
+        """
+        Execute the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         obj = context.object
         bm = bmesh.from_edit_mesh(obj.data)
 
@@ -254,6 +275,13 @@ class angle_select_click_extend(bpy.types.Operator):
 
 # ヘッダーに項目追加
 def angle_select_click_threshold_menu(self, context):
+    """
+    Select the layout menu.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
 
     layout = self.layout
     scene = context.scene
@@ -266,6 +294,11 @@ def angle_select_click_threshold_menu(self, context):
 
 addon_keymaps = []
 def register():
+    """
+    Registers a new addon.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
     wm = bpy.context.window_manager
 
@@ -290,6 +323,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister all registered addon.
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)
     for km, kmi in addon_keymaps:
         km.keymap_items.remove(kmi)

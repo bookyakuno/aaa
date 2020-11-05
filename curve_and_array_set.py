@@ -18,6 +18,12 @@ import bpy
 
 
 def main(context):
+    """
+    Main function.
+
+    Args:
+        context: (todo): write your description
+    """
     for ob in context.scene.objects:
         print(ob)
 
@@ -29,11 +35,25 @@ class curve_and_array_set(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
 
 
     def execute(self, context):
+        """
+        Executes all the framework.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         main(context)
         
         #  アクティブオブジェクトの定義
@@ -100,6 +120,13 @@ class curve_and_array_set_Panel(bpy.types.Panel):
 
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         layout = self.layout
 
@@ -111,11 +138,21 @@ class curve_and_array_set_Panel(bpy.types.Panel):
 
 
 def register():
+    """
+    Register the given curve.
+
+    Args:
+    """
     bpy.utils.register_class(curve_and_array_set)
     bpy.utils.register_class(curve_and_array_set_Panel)
 
 
 def unregister():
+    """
+    Unregister the curve.
+
+    Args:
+    """
     bpy.utils.unregister_class(curve_and_array_set)
     bpy.utils.unregister_class(curve_and_array_set_Panel)
 

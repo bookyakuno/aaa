@@ -41,6 +41,13 @@ class ExampleAddonPreferences(AddonPreferences):
             )
 
     def draw(self, context):
+        """
+        Draws layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 #        layout.label(text="This is a preferences view for our addon")
         layout.prop(self, "filepath_x")
@@ -54,6 +61,13 @@ class OBJECT_OT_addon_prefs_example(Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute preferences.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         user_preferences = context.user_preferences
         addon_prefs = user_preferences.addons[__name__].preferences
 
@@ -68,11 +82,21 @@ class OBJECT_OT_addon_prefs_example(Operator):
 
 # Registration
 def register():
+    """
+    Registers the given addon.
+
+    Args:
+    """
     bpy.utils.register_class(OBJECT_OT_addon_prefs_example)
     bpy.utils.register_class(ExampleAddonPreferences)
 
 
 def unregister():
+    """
+    Registers the given addon.
+
+    Args:
+    """
     bpy.utils.unregister_class(OBJECT_OT_addon_prefs_example)
     bpy.utils.unregister_class(ExampleAddonPreferences)    
     
@@ -92,6 +116,12 @@ def unregister():
     
 
 def main(context):
+    """
+    Main function.
+
+    Args:
+        context: (todo): write your description
+    """
     for ob in context.scene.objects:
         print(ob)
 
@@ -103,9 +133,23 @@ class save_thumbnail(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Render the image
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         main(context)
         
         
@@ -301,9 +345,23 @@ class asset_flinger_thumbnail(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Implementation of the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         main(context)
 
 #        old_shadingvariable = bpy.context.scene.object.shadingvariable
@@ -353,6 +411,11 @@ class asset_flinger_thumbnail(bpy.types.Operator):
 addon_keymaps = []
 
 def register():
+    """
+    Registers the addon. addon.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
     # handle the keymap
 #addon_keymaps = [] #put on out of register()
@@ -363,6 +426,11 @@ def register():
     addon_keymaps.append((km, kmi))
 
 def unregister():
+    """
+    Removes all addon.
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)
     # handle the keymap
     for km, kmi in addon_keymaps:

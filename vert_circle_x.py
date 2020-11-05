@@ -34,6 +34,13 @@ class vert_circle_x(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Execute the tool.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 #		before_Apivot = bpy.context.space_data.pivot_point
 		automerge_setting = bpy.context.scene.tool_settings.use_mesh_automerge
@@ -62,6 +69,11 @@ class vert_circle_x(bpy.types.Operator):
 
 addon_keymaps = []
 def register():
+    """
+    Registers a new addon.
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 	wm = bpy.context.window_manager
 
@@ -70,6 +82,11 @@ def register():
 	addon_keymaps.append((km, kmi))
 
 def unregister():
+    """
+    Removes all addon.
+
+    Args:
+    """
 	bpy.utils.unregister_module(__name__)
 	for km, kmi in addon_keymaps:
 		km.keymap_items.remove(kmi)

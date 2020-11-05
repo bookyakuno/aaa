@@ -37,6 +37,13 @@ class isolate_select(bpy.types.Operator):
 	bl_options = {'REGISTER'}
 
 	def execute(self, context):
+     """
+     Executes all operations.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 
@@ -270,6 +277,13 @@ class LocalViewEx_ops(bpy.types.Operator): #ローカルビューを非ズーム
 	# bl_options = {'REGISTER'}
 
 	def execute(self, context):
+     """
+     Creates a new context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		pre_smooth_view = context.user_preferences.view.smooth_view
@@ -299,6 +313,11 @@ class LocalViewEx_ops(bpy.types.Operator): #ローカルビューを非ズーム
 
 addon_keymaps = []
 def register():
+    """
+    Registers a new addon.
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 	wm = bpy.context.window_manager
 
@@ -308,6 +327,11 @@ def register():
 
 
 def unregister():
+    """
+    Removes all addon.
+
+    Args:
+    """
 	bpy.utils.unregister_module(__name__)
 	for km, kmi in addon_keymaps:
 		km.keymap_items.remove(kmi)

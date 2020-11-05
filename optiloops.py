@@ -39,6 +39,13 @@ from bpy.props import (
 
 
 def get_loop(bm, e):
+    """
+    Return a loop.
+
+    Args:
+        bm: (todo): write your description
+        e: (todo): write your description
+    """
     checkverts = e.verts[:]
     checkedverts = []
     loop_edges = [e]
@@ -63,6 +70,12 @@ def get_loop(bm, e):
 
 
 def get_neighbours(loops):
+    """
+    Returns a list of edges in - place
+
+    Args:
+        loops: (str): write your description
+    """
     for l in loops:
         l.neighbours = []
     for l in loops:
@@ -91,6 +104,12 @@ class edgeloop():
 
 
 def loop_closed(es):
+    """
+    Check if closed closed closed closed.
+
+    Args:
+        es: (todo): write your description
+    """
     closed = True
     for e in es:
         for v in e.verts:
@@ -105,6 +124,13 @@ def loop_closed(es):
 
 
 def check_angles(edges, angle_threshold):
+    """
+    Check if the angles in the same.
+
+    Args:
+        edges: (list): write your description
+        angle_threshold: (float): write your description
+    """
     for e in edges:
         if len(e.link_faces) != 2:
             return False
@@ -116,6 +142,15 @@ def check_angles(edges, angle_threshold):
 
 
 def skiploop(result_loops, final_loops, skip_loops, lstart):
+    """
+    Perform a list of undirectploop.
+
+    Args:
+        result_loops: (todo): write your description
+        final_loops: (bool): write your description
+        skip_loops: (todo): write your description
+        lstart: (todo): write your description
+    """
     final_loops.append(lstart)
     last_neighbour = None
     checkneighbours = lstart.neighbours[:]
@@ -137,6 +172,13 @@ def skiploop(result_loops, final_loops, skip_loops, lstart):
 
 
 def optiloops(self, context):
+    """
+    Optimize edges.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
     angle_threshold = self.angle_threshold / 180 * 3.1415926
 
     ob = bpy.context.active_object
@@ -291,24 +333,55 @@ class OptiloopsOperator(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         optiloops(self, context)
         return {'FINISHED'}
 
 def optiloops_panel(self, context):
+    """
+    Optimize layout panel
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
     layout = self.layout
     layout.operator('mesh.optiloops')
 
 # Regustratuib
 
 def register():
+    """
+    Registers a new panel.
+
+    Args:
+    """
     bpy.utils.register_class(OptiloopsOperator)
     bpy.types.VIEW3D_MT_edit_mesh.append(optiloops_panel)
 
 
 def unregister():
+    """
+    Unregister a panel from the given manager.
+
+    Args:
+    """
     bpy.utils.unregister_class(OptiloopsOperator)
     bpy.types.VIEW3D_MT_edit_mesh.remove(optiloops_panel)
 

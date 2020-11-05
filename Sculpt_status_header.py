@@ -60,6 +60,13 @@ bl_info = {
 
 
 def prop_unified_size_x(self, context):
+    """
+    Propagate the size of the property.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
 	ups = context.tool_settings.unified_paint_settings
 	ptr = ups if ups.use_unified_size else brush
 	parent.prop(ptr, prop_name, icon=icon, text=text, slider=slider)
@@ -68,6 +75,13 @@ def prop_unified_size_x(self, context):
 
 # ヘッダーに項目追加
 def sculpt_header(self, context):
+    """
+    Sculpt layout
+
+    Args:
+        self: (todo): write your description
+        context: (dict): write your description
+    """
 
 	layout = self.layout
 
@@ -226,6 +240,13 @@ def sculpt_header(self, context):
 
 
 def texture_import(self, context):
+    """
+    Imports a single context.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
 
 	layout = self.layout
 
@@ -269,6 +290,13 @@ class duplicate_mask(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.paint.hide_show(action='HIDE', area='MASKED') # マスク部分を非表示
 		bpy.ops.sculpt.sculptmode_toggle() # オブジェクトモードに戻す
 		bpy.ops.object.select_all(action='DESELECT') #全選択解除で最後に選択するものを複製したものだけにする
@@ -296,6 +324,13 @@ class separate_mask(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.paint.hide_show(action='HIDE', area='MASKED') # マスク部分を非表示
 		bpy.ops.sculpt.sculptmode_toggle() # オブジェクトモードに戻す
 		bpy.ops.object.select_all(action='DESELECT') #全選択解除で最後に選択するものを複製したものだけにする
@@ -319,6 +354,13 @@ class mat_select_mask(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the given context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.paint.hide_show(action='HIDE', area='MASKED') # マスク部分を非表示
 		bpy.ops.sculpt.sculptmode_toggle() # オブジェクトモードに戻す
 		bpy.ops.object.editmode_toggle() # 編集モード
@@ -346,6 +388,13 @@ class mat_mask(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Execute the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.paint.hide_show(action='HIDE', area='MASKED') # マスク部分を非表示
 		bpy.ops.object.editmode_toggle() # 編集モード
 		bpy.ops.mesh.select_all(action='DESELECT') #全選択解除
@@ -397,6 +446,13 @@ class random_mat(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		ob = bpy.context.object
 		me = ob.data
@@ -437,6 +493,13 @@ class cut_mat_group(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		bpy.ops.sculpt.sculptmode_toggle() # オブジェクトモードへ
 		active = bpy.context.active_object
@@ -507,6 +570,13 @@ class grease_pencil_cut(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the specified scope.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		bpy.ops.sculpt.sculptmode_toggle() # オブジェクトモードへ
 		active = bpy.context.active_object
@@ -558,6 +628,13 @@ class grease_pencil_cut_v2(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the context
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		bpy.ops.gpencil.convert(type='CURVE', use_timing_data=True)
@@ -620,6 +697,13 @@ class convert_multireso(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Execute all the operations.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 
@@ -673,6 +757,13 @@ class Sculpt_menu_x(bpy.types.Panel):
 
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		edit = context.user_preferences.edit
 		wm = context.window_manager
@@ -704,6 +795,13 @@ class automirror_apply_mod(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the view.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		bpy.context.scene.AutoMirror_apply_mirror = True
 		bpy.ops.object.automirror()
@@ -720,6 +818,11 @@ class automirror_apply_mod(bpy.types.Operator):
 
 addon_keymaps = []
 def register():
+    """
+    Register a new mask.
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 
 	bpy.types.VIEW3D_HT_header.prepend(sculpt_header)
@@ -767,6 +870,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister a bpy library.
+
+    Args:
+    """
 	bpy.types.VIEW3D_HT_header.remove(sculpt_header)
 	bpy.types.VIEW3D_PT_tools_brush_texture.remove(texture_import)
 

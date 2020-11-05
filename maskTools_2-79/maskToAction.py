@@ -34,12 +34,26 @@ class MaskModSmooth(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
 	bpy.types.Scene.maskmod_smooth_strength = bpy.props.IntProperty(name = "Smooth strength", default = 10, min=-100, max=100)
 
 	def execute(self, context):
+     """
+     Execute a list of the context represents.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		maskmod_smooth_strength = context.scene.maskmod_smooth_strength # update property from user input
 
 
@@ -77,6 +91,13 @@ class MaskModDisplace(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -92,6 +113,13 @@ class MaskModDisplace(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Execute the operations that mask.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		maskmod_displace_strength = context.scene.maskmod_displace_strength # update property from user input
 		maskmod_displace_apply = context.scene.maskmod_displace_apply # update property from user input
 
@@ -168,6 +196,11 @@ class MaskModDisplace(bpy.types.Operator):
 
 
 def register():
+    """
+    Registers a mask.
+
+    Args:
+    """
 
     bpy.types.Scene.maskmod_smooth_strength = MaskModSmooth.maskmod_smooth_strength
     bpy.types.Scene.maskmod_displace_strength = MaskModDisplace.maskmod_displace_strength
@@ -177,6 +210,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister a mask.
+
+    Args:
+    """
 
     bpy.types.Scene.maskmod_smooth_strength
     bpy.types.Scene.maskmod_displace_strength

@@ -53,6 +53,13 @@ class assetflinger_objPreferences(AddonPreferences):
 
 
     def draw(self, context):
+        """
+        Draws layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         layout.prop(self, "temp_folder")
@@ -68,6 +75,12 @@ class assetflinger_objPreferences(AddonPreferences):
 # ===============================================================
 
 def main(context):
+    """
+    Main function.
+
+    Args:
+        context: (todo): write your description
+    """
     for ob in context.scene.objects:
         print(ob)
 
@@ -79,9 +92,23 @@ class save_thumbnail(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Execute image
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         main(context)
         
         
@@ -244,9 +271,23 @@ class asset_flinger_thumbnail(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Implements the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         main(context)
 
 
@@ -372,9 +413,23 @@ class assetflinger_obj(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll for the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return True
 
     def execute(self, context):
+        """
+        Implements.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if len(bpy.context.selected_objects) < 1:
             return {'CANCELLED'}
 
@@ -412,6 +467,13 @@ class assetflinger_obj(bpy.types.Operator):
 
 
     def setUpPaths(self, context):
+        """
+        Sets the working directories.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         user_preferences = context.user_preferences
         addon_prefs = user_preferences.addons[__name__].preferences
 
@@ -439,6 +501,13 @@ class assetflinger_objPanel(bpy.types.Panel):
 
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         layout = self.layout
         obj = context.object
@@ -458,12 +527,24 @@ class assetflinger_objPanel(bpy.types.Panel):
 
 # Utility functions
 def printErrorMessage(msg, e):
+    """
+    Print a message to the screen.
+
+    Args:
+        msg: (str): write your description
+        e: (todo): write your description
+    """
     print("-- Error ---- !")
     print(msg, "\n", str(e))
     print("------\n\n")
 
 
 def register():
+    """
+    Register the given asset.
+
+    Args:
+    """
 
     bpy.utils.register_class(assetflinger_objPreferences)
     bpy.utils.register_class(assetflinger_obj)
@@ -474,6 +555,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister an asset.
+
+    Args:
+    """
 
     bpy.utils.unregister_class(assetflinger_objPreferences)
 

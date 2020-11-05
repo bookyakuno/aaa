@@ -37,6 +37,14 @@ class dup_x_modal(bpy.types.Operator):
     first_value = FloatProperty()
 
     def modal(self, context, event):
+        """
+        Modifies the mouse event
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+            event: (todo): write your description
+        """
         if event.type == 'MOUSEMOVE':
             delta = self.first_mouse_y - event.mouse_y
             context.object.scale.x = self.first_value + delta * 0.001
@@ -56,6 +64,14 @@ class dup_x_modal(bpy.types.Operator):
         return {'RUNNING_MODAL'}
 
     def invoke(self, context, event):
+        """
+        Invoke the event.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         if context.object:
             self.first_mouse_y = event.mouse_y
             self.first_value = context.object.scale.x
@@ -76,6 +92,13 @@ class dup_x(bpy.types.Macro):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll the number of the given context.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None
 
 
@@ -84,6 +107,13 @@ class dup_x_01(bpy.types.Operator):
 	bl_label = "dup_x_01"
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		snap_dx = bpy.context.scene.tool_settings.use_snap
 		snape_dx = bpy.context.scene.tool_settings.snap_element
 		snapt_dx = bpy.context.scene.tool_settings.snap_target
@@ -106,6 +136,13 @@ class dup_x_02(bpy.types.Operator):
 	bl_label = "dup_x_02"
 
 	def execute(self, context):
+     """
+     Executes the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.context.scene.tool_settings.use_snap = False
 
 		return {'FINISHED'}
@@ -116,9 +153,23 @@ class dup_x_03(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll the number of the given context.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return context.active_object is not None
 
 	def execute(self, context):
+     """
+     Execute the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return {'FINISHED'}
 
@@ -133,6 +184,13 @@ class dup_x_04(bpy.types.Operator):
 	bl_label = "dup_x_04"
 
 	def execute(self, context):
+     """
+     Execute the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.transform.resize("INVOKE_DEFAULT")
 
 		return {'FINISHED'}
@@ -145,6 +203,13 @@ class dup_x_05(bpy.types.Operator):
 	bl_label = "dup_x_05"
 
 	def execute(self, context):
+     """
+     Execute the execution context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.transform.rotate("INVOKE_DEFAULT",constraint_orientation='NORMAL',constraint_axis=(False, False, True))
 
 		return {'FINISHED'}
@@ -155,6 +220,13 @@ class dup_x_06(bpy.types.Operator):
 	bl_label = "dup_x_06"
 
 	def execute(self, context):
+     """
+     Executes the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.transform.translate(value=(0.1, 0, 0), constraint_axis=(True, False, False), constraint_orientation='GLOBAL',)
 
 		return {'FINISHED'}
@@ -164,6 +236,13 @@ class dup_x_reset(bpy.types.Operator):
 	bl_label = "dup_x_reset"
 
 	def execute(self, context):
+     """
+     Execute the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.context.scene.tool_settings.use_snap = snap_dx
 		bpy.context.scene.tool_settings.snap_element = snape_dx
 		bpy.context.scene.tool_settings.snap_target = snapt_dx
@@ -206,6 +285,11 @@ class dup_x_reset(bpy.types.Operator):
 		# store keymaps here to access after registration
 addon_keymaps = []
 def register():
+    """
+    Registers a new ssh keys
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 	# ヘッダーメニューに項目追加
 
@@ -232,6 +316,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister the given module classes.
+
+    Args:
+    """
 	bpy.utils.unregister_class(dup_x_modal)
 	bpy.utils.unregister_class(dup_x)
 	bpy.utils.unregister_class(dup_x_01)

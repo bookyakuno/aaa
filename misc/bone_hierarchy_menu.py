@@ -3,6 +3,14 @@ import bpy
 
 # ボーンを階層表示するメニュー
 def bone_hierarchy_menu(self,context,layout):
+    """
+    Make a hierarchy layout.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+        layout: (str): write your description
+    """
 	if not bpy.context.active_object:
 		return
 	if not bpy.context.object.type == "ARMATURE":
@@ -39,6 +47,16 @@ def bone_hierarchy_menu(self,context,layout):
 
 # ループ
 def bone_hierarchy_loop(obj,bone,col,icon_val,count):
+    """
+    Returns a hierarchy. hier.
+
+    Args:
+        obj: (todo): write your description
+        bone: (str): write your description
+        col: (todo): write your description
+        icon_val: (str): write your description
+        count: (int): write your description
+    """
 	for bone in bone.children:
 		bone_child_item_menu(obj,bone,col,icon_val,count)
 		bone_hierarchy_loop(obj,bone,col,icon_val,count + 1)
@@ -49,6 +67,16 @@ def bone_hierarchy_loop(obj,bone,col,icon_val,count):
 
 # 各ボーンのメニュー
 def bone_child_item_menu(obj,bone,col,icon_val,range_count):
+    """
+    Handle a single item menu.
+
+    Args:
+        obj: (todo): write your description
+        bone: (todo): write your description
+        col: (todo): write your description
+        icon_val: (int): write your description
+        range_count: (str): write your description
+    """
 	rows = col.row(align=True)
 	for i in range(range_count):
 		rows.separator(factor=2)

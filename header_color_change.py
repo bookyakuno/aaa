@@ -13,14 +13,31 @@ bl_info = {
 
 @persistent
 def LoadPost_header_col(scn):
+    """
+    Sets the header column.
+
+    Args:
+        scn: (todo): write your description
+    """
     handle_handlers_draw_header_col()
 
 def handle_handlers_draw_header_col():
+    """
+    Handle the error handlers for the given handlers.
+
+    Args:
+    """
 	if TEST_prefset not in bpy.app.handlers.depsgraph_update_post:
 		bpy.app.handlers.depsgraph_update_post.append(TEST_prefset)
 
 
 def TEST_prefset(scene):
+    """
+    Assigns prefset
+
+    Args:
+        scene: (todo): write your description
+    """
     prefs = bpy.context.preferences
 
     if scene.tool_settings.use_keyframe_insert_auto == True:
@@ -31,9 +48,19 @@ def TEST_prefset(scene):
 
 
 def register():
+    """
+    Registers the application.
+
+    Args:
+    """
 	bpy.app.handlers.load_post.append(LoadPost_header_col)
 
 def unregister():
+    """
+    Unregister the registered application.
+
+    Args:
+    """
 	bpy.app.handlers.load_post.remove(LoadPost_header_col)
 
 

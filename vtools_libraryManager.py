@@ -26,6 +26,12 @@ from bpy_extras.io_utils import ImportHelper
 #---- Definitions -----#
 
 def findImage (p_Name):
+    """
+    Finds an image with name
+
+    Args:
+        p_Name: (str): write your description
+    """
 
 	found = False
 
@@ -37,6 +43,12 @@ def findImage (p_Name):
 	return found
 
 def selectImages (p_fileList):
+    """
+    Selects a list of images from a list
+
+    Args:
+        p_fileList: (str): write your description
+    """
 
 	file_list = p_fileList
 	img_list = [item for item in file_list if item[-3:] == 'png' or item[-3:] == 'jpg' or item[-4:] == 'jpeg' or item[-3:] == 'tga']
@@ -44,6 +56,12 @@ def selectImages (p_fileList):
 	return img_list
 
 def image_batchImport(p_dir):
+    """
+    Load all images in - memory.
+
+    Args:
+        p_dir: (str): write your description
+    """
 
 
 	if os.path.isdir(p_dir):
@@ -67,6 +85,12 @@ def image_batchImport(p_dir):
 
 
 def image_batchRemove(p_dir):
+    """
+    Removes images from image directory.
+
+    Args:
+        p_dir: (str): write your description
+    """
 
 
 	if os.path.isdir(p_dir):
@@ -93,6 +117,12 @@ def image_batchRemove(p_dir):
 
 
 def image_DeleteNonExisting(p_dir):
+    """
+    Delete image images from the image.
+
+    Args:
+        p_dir: (str): write your description
+    """
 
 	if os.path.isdir(p_dir):
 		for img in bpy.data.images:
@@ -112,10 +142,20 @@ def image_DeleteNonExisting(p_dir):
 
 
 def findUserSysPath():
+    """
+    Èi̇·åıĸçń¾åĳįģ
+
+    Args:
+    """
 
 	userPath = ''
 
 def readLibraryDir():
+    """
+    Read the contents of the contents of the directory.
+
+    Args:
+    """
 		dir = ''
 		fileDir = os.path.join(bpy.utils.resource_path('USER'), "scripts\\presets\\texture_library.conf")
 		if os.path.isfile(fileDir):
@@ -130,6 +170,11 @@ def readLibraryDir():
 
 
 def deleteNonExistingLibraries():
+    """
+    Deletes all the texture directories in the scene.
+
+    Args:
+    """
 
 	i = 0
 	cont = 0
@@ -142,6 +187,12 @@ def deleteNonExistingLibraries():
 		i += 1
 
 def findSubLibraries(p_parentLibrary):
+    """
+    Recursively find directories.
+
+    Args:
+        p_parentLibrary: (todo): write your description
+    """
 	existing = False
 	dir = p_parentLibrary
 
@@ -167,6 +218,12 @@ def findSubLibraries(p_parentLibrary):
 
 
 def loadLibrary(p_filePath):
+    """
+    Loads a single texture from the given path.
+
+    Args:
+        p_filePath: (str): write your description
+    """
 
 
 	existing = False
@@ -197,6 +254,12 @@ def loadLibrary(p_filePath):
 	return loaded
 
 def removeLibrary(p_Id):
+    """
+    Removes a texture from the texture.
+
+    Args:
+        p_Id: (str): write your description
+    """
 
 	idSelected = p_Id
 	numItems = len(bpy.context.scene.textureLibrary)
@@ -224,6 +287,13 @@ def removeLibrary(p_Id):
 
 
 def sortLibrary(p_library, p_id):
+    """
+    Sorts a texture by its id.
+
+    Args:
+        p_library: (todo): write your description
+        p_id: (str): write your description
+    """
 
 	idCont = p_id
 	if p_library.parent != "None":
@@ -249,12 +319,27 @@ class VTOOLS_OP_addLibrary(bpy.types.Operator, ImportHelper):
 	bl_description = "add a new library and every folder within it"
 
 	def addLibrary(self, context, p_filePath):
+     """
+     Adds a report to the report.
+
+     Args:
+         self: (todo): write your description
+         context: (todo): write your description
+         p_filePath: (str): write your description
+     """
 		loaded = loadLibrary(p_filePath)
 		if loaded == False:
 			self.report({'WARNING', 'INFO'}, "No valid directory path. Keep filename slot empty")
 		return {'FINISHED'}
 
 	def execute(self,context):
+     """
+     Execute the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		return self.addLibrary(context, self.filepath)
 
 class VTOOLS_OP_removeLibrary(bpy.types.Operator):
@@ -263,6 +348,13 @@ class VTOOLS_OP_removeLibrary(bpy.types.Operator):
 	bl_description = "remove the selected library from the list"
 
 	def execute(self,context):
+     """
+     Removes a texture for the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		removeLibrary(bpy.context.scene.textureLibrary_ID_index)
 		return {'FINISHED'}
@@ -275,6 +367,13 @@ class VTOOLS_OP_cleanLibraries(bpy.types.Operator):
 	bl_description = "remove every library"
 
 	def execute(self,context):
+     """
+     Execute a single texture.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		while len(bpy.context.scene.textureLibrary) > 0:
@@ -294,6 +393,13 @@ class VTOOLS_OP_refreshLibraries(bpy.types.Operator):
 	bl_description = "refresh existing libraries"
 
 	def execute(self,context):
+     """
+     Execute all the images. json files.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		deleteNonExistingLibraries()
 		for l in bpy.context.scene.textureLibrary:
@@ -317,6 +423,12 @@ class VTOOLS_OP_refreshLibraries(bpy.types.Operator):
 #------------ CALLBACKS -------------#
 
 def activeSelected(p_name):
+    """
+    Display a texture.
+
+    Args:
+        p_name: (str): write your description
+    """
 
 	cont = 0
 	for item in bpy.context.scene.textureLibrary:
@@ -328,6 +440,13 @@ def activeSelected(p_name):
 
 
 def callback_loadLibrary(self, value):
+    """
+    Callback for loadLibrary
+
+    Args:
+        self: (todo): write your description
+        value: (todo): write your description
+    """
 	library = self
 
 	if self.loaded:
@@ -358,6 +477,20 @@ def callback_loadLibrary(self, value):
 class VTOOLS_UIL_textureLibraryUI(bpy.types.UIList):
 
 	def draw_item(self, context, layout, data, item, icon, active_data, active_propname, index):
+     """
+     Draw item to the item
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+         layout: (str): write your description
+         data: (todo): write your description
+         item: (todo): write your description
+         icon: (todo): write your description
+         active_data: (bool): write your description
+         active_propname: (str): write your description
+         index: (int): write your description
+     """
 
 		row = layout.row(align = True)
 
@@ -414,9 +547,23 @@ class LBM_PN_LibraryManager(bpy.types.Panel):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Given a context. k.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return (context.sculpt_object or context.vertex_paint_object or context.vertex_paint_object or context.image_paint_object)
 
 	def draw(self,context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		layout = self.layout
 		row = layout.row()
@@ -446,6 +593,11 @@ LBM_PN_LibraryManager,
 
 
 def register():
+    """
+    Register a textureLibrary.
+
+    Args:
+    """
 	for cls in classes:
 		bpy.utils.register_class(cls)
 
@@ -456,6 +608,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister all classes.
+
+    Args:
+    """
 	for cls in classes:
 		bpy.utils.unregister_class(cls)
 

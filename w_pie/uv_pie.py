@@ -44,6 +44,12 @@ MAX_LOCATION = 1
 
 class ProjectFromNormal(object):
     def __init__(self):
+        """
+        Create a new polygons.
+
+        Args:
+            self: (todo): write your description
+        """
         bpy.ops.object.mode_set(mode='OBJECT')
 
         self.current_obj = bpy.context.selected_objects[0]
@@ -70,6 +76,12 @@ class ProjectFromNormal(object):
 
 
     def transUvVector(self):
+        """
+        Translates vector of the vector
+
+        Args:
+            self: (todo): write your description
+        """
         max_position   = 0.
         min_position_x = 0.
         min_position_y = 0.
@@ -121,6 +133,12 @@ class ProjectFromNormal(object):
 
 
     def averageNormal(self):
+        """
+        Returns the average of the polygon.
+
+        Args:
+            self: (todo): write your description
+        """
         weight_norx   = 0.
         weight_nory   = 0.
         weight_norz   = 0.
@@ -138,6 +156,16 @@ class ProjectFromNormal(object):
 
 
     def calcRotAngle(self, axis, nor_x, nor_y, nor_z):
+        """
+        Calculate the angle of the vector.
+
+        Args:
+            self: (todo): write your description
+            axis: (int): write your description
+            nor_x: (todo): write your description
+            nor_y: (todo): write your description
+            nor_z: (todo): write your description
+        """
         theta        = 0
         vector_z     = Vector((0.0, 0.0, 1.0))
         vector_n     = None
@@ -168,6 +196,13 @@ class NewUvProjectMenu(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Returns the given context from a context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         ProjectFromNormal()
         return {'FINISHED'}
 
@@ -207,9 +242,23 @@ class Placeholder(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll for the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return False
 
     def execute(self, context):
+        """
+        Execute the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         return {'FINISHED'}
 
 
@@ -219,6 +268,13 @@ class SplitAndGrab(bpy.types.Operator):
     bl_label = "Rip Face"
 
     def execute(self, context):
+        """
+        Implements the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         bpy.ops.uv.select_split()
         bpy.ops.transform.translate()
@@ -235,6 +291,13 @@ class live_unwrap_toggle(bpy.types.Operator):
     bl_label = "Live Unwrap"
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if bpy.context.scene.tool_settings.edge_path_live_unwrap == (False):
            bpy.context.scene.tool_settings.edge_path_live_unwrap = True
         else:
@@ -252,6 +315,13 @@ class uv_pie(Menu):
     bl_label = "UV"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -281,6 +351,13 @@ class UvSelectMode(bpy.types.Menu):
     bl_idname = "pie.uv_select_mode"
 
     def draw(self, context):
+        """
+        Draw the context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         layout.operator_context = 'INVOKE_REGION_WIN'

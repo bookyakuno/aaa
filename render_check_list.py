@@ -43,6 +43,13 @@ class set_f(bpy.types.Operator):
    bl_label = "set_f"
    bl_description = "Change the number of sheets"
    def execute(self, context):
+       """
+       Execute the command.
+
+       Args:
+           self: (todo): write your description
+           context: (dict): write your description
+       """
 
 	   scn = context.scene
 
@@ -57,6 +64,13 @@ class now_f(bpy.types.Operator):
    bl_description = "Current number of sheets"
 
    def execute(self, context):
+       """
+       Execute a singleton.
+
+       Args:
+           self: (todo): write your description
+           context: (dict): write your description
+       """
 
 	   scn = context.scene
 
@@ -76,6 +90,13 @@ class SampleUI_PT_object(bpy.types.Panel):
 	bl_region_type = "WINDOW"
 
 	def draw(self, context):
+     """
+     Draws context
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		self.layout.prop(context.object.sample_props,"floatSample")
 
 		layout = self.layout
@@ -91,6 +112,13 @@ class render_cycleslots(bpy.types.Operator):
 	bl_description = "Slots change every time rendering"
 
 	def execute(self, context):
+     """
+     Render the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		slots = bpy.data.images['Render Result'].render_slots
@@ -105,6 +133,13 @@ class x_y_change(bpy.types.Operator):
 	bl_label = "X-Y"
 
 	def execute(self, context):
+     """
+     Executes the xmain view.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 #        main(context)
 		old_x = bpy.context.scene.render.resolution_x
 		old_y = bpy.context.scene.render.resolution_y
@@ -119,6 +154,13 @@ class x_y_change(bpy.types.Operator):
 
 
 def render_final_resolution_ui_z(self, context):
+    """
+    Render the layout.
+
+    Args:
+        self: (todo): write your description
+        context: (dict): write your description
+    """
 
 
 
@@ -318,6 +360,11 @@ def render_final_resolution_ui_z(self, context):
 	original_draw_func = None
 
 def register():
+    """
+    Register the application methods.
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 
 	global original_draw_func
@@ -332,6 +379,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister the dimensions from the terminal
+
+    Args:
+    """
 	bpy.types.RENDER_PT_dimensions.remove(render_final_resolution_ui_z)
 
 

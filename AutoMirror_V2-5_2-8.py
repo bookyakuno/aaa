@@ -92,6 +92,13 @@ class AUTOMIRROR_PT_preferences(bpy.types.AddonPreferences):
 	bl_idname = __name__
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 
 		preferences = context.preferences
@@ -158,9 +165,23 @@ class AlignVertices(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll for the given context.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return True
 
 	def execute(self, context):
+     """
+     Execute the view.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.object.mode_set(mode = 'OBJECT')
 
 		x1,y1,z1 = bpy.context.scene.cursor.location
@@ -198,9 +219,23 @@ class AutoMirror(bpy.types.Operator):
 
 	@classmethod
 	def poll(cls, context):
+     """
+     Poll for the given context.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 		return True
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		if bpy.context.object and bpy.context.object.type == 'MESH':
 			layout.prop(context.scene, "AutoMirror_axis", text="Mirror axis")
@@ -216,6 +251,17 @@ class AutoMirror(bpy.types.Operator):
 			layout.label(icon="ERROR", text="No mesh selected")
 
 	def get_local_axis_vector(self, context, X, Y, Z, orientation):
+     """
+     Returns the local axis.
+
+     Args:
+         self: (todo): write your description
+         context: (todo): write your description
+         X: (str): write your description
+         Y: (str): write your description
+         Z: (str): write your description
+         orientation: (todo): write your description
+     """
 		loc = context.object.location
 		bpy.ops.object.mode_set(mode="OBJECT") # Needed to avoid to translate vertices
 
@@ -228,6 +274,13 @@ class AutoMirror(bpy.types.Operator):
 		return v2-v1
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		X,Y,Z = 0,0,0
 		if bpy.context.scene.AutoMirror_axis == 'x':
 			X = 1
@@ -301,6 +354,13 @@ class tools_BisectMirror(Panel):
 
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		col = layout.column(align=True)
 		# layout.operator("object.booltool_auto_difference")
@@ -377,6 +437,11 @@ classes = (
 
 # registering and menu integration
 def register():
+    """
+    Registers all classes.
+
+    Args:
+    """
 	for cls in classes:
 		bpy.utils.register_class(cls)
 	# bpy.types.VIEW3D_MT_edit_mesh_specials.prepend(menu_func)
@@ -386,6 +451,11 @@ def register():
 
 # unregistering and removing menus
 def unregister():
+    """
+    Unregister all classes.
+
+    Args:
+    """
 	for cls in reversed(classes):
 		bpy.utils.unregister_class(cls)
 	# bpy.types.VIEW3D_MT_edit_mesh_specials.remove(menu_func)

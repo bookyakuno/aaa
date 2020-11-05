@@ -55,6 +55,14 @@ from mathutils.geometry import (
     intersect_ray_tri)
 
 def get_units_info(scale, unit_system, separate_units):
+    """
+    Return the units in units
+
+    Args:
+        scale: (float): write your description
+        unit_system: (todo): write your description
+        separate_units: (str): write your description
+    """
     if unit_system == 'METRIC':
             scale_steps = ((1000, 'km'), (1, 'm'), (1 / 100, 'cm'),
                 (1 / 1000, 'mm'), (1 / 1000000, '\u00b5m'))
@@ -69,6 +77,14 @@ def get_units_info(scale, unit_system, separate_units):
     return (scale, scale_steps, separate_units)
 
 def convert_distance(val, units_info, precision = 5):
+    """
+    Convert a value from_distance.
+
+    Args:
+        val: (str): write your description
+        units_info: (str): write your description
+        precision: (int): write your description
+    """
     scale, scale_steps, separate_units = units_info
     sval = val * scale
     idx = 0
@@ -96,6 +112,14 @@ def convert_distance(val, units_info, precision = 5):
     return dval
 
 def location_3d_to_region_2d(region, rv3d, coord):
+    """
+    Convert region coordinates to 3d coordinates.
+
+    Args:
+        region: (str): write your description
+        rv3d: (todo): write your description
+        coord: (todo): write your description
+    """
     prj = rv3d.perspective_matrix * Vector((coord[0], coord[1], coord[2], 1.0))
     width_half = region.width / 2.0
     height_half = region.height / 2.0
@@ -104,6 +128,15 @@ def location_3d_to_region_2d(region, rv3d, coord):
                    ))
 
 def region_2d_to_orig_and_view_vector(region, rv3d, coord, clamp=None):
+    """
+    Convert region to region coordinates.
+
+    Args:
+        region: (str): write your description
+        rv3d: (array): write your description
+        coord: (todo): write your description
+        clamp: (float): write your description
+    """
     viewinv = rv3d.view_matrix.inverted()
     persinv = rv3d.perspective_matrix.inverted()
 
@@ -142,6 +175,15 @@ def region_2d_to_orig_and_view_vector(region, rv3d, coord, clamp=None):
     return origin_start, view_vector
 
 def out_Location(rv3d, region, orig, vector):
+    """
+    Given a region of 3d location of a 3d.
+
+    Args:
+        rv3d: (todo): write your description
+        region: (str): write your description
+        orig: (str): write your description
+        vector: (todo): write your description
+    """
     view_matrix = rv3d.view_matrix
     v1 = Vector((int(view_matrix[0][0]*1.5),int(view_matrix[0][1]*1.5),int(view_matrix[0][2]*1.5)))
     v2 = Vector((int(view_matrix[1][0]*1.5),int(view_matrix[1][1]*1.5),int(view_matrix[1][2]*1.5)))
@@ -168,6 +210,22 @@ def snap_utilities(self,
                 previous_vert = None,
                 ignore_obj = None,
                 increment = 0.0):
+    """
+    Implements a new instance for a new instance.
+
+    Args:
+        self: (todo): write your description
+        context: (dict): write your description
+        obj_matrix_world: (todo): write your description
+        bm_geom: (todo): write your description
+        bool_update: (todo): write your description
+        mcursor: (todo): write your description
+        outer_verts: (str): write your description
+        constrain: (array): write your description
+        previous_vert: (todo): write your description
+        ignore_obj: (bool): write your description
+        increment: (str): write your description
+    """
 
     rv3d = context.region_data
     region = context.region
@@ -368,12 +426,28 @@ def snap_utilities(self,
             self.len = vec.length
 
 def get_isolated_edges(bmvert):
+    """
+    Return all edges of the vertices.
+
+    Args:
+        bmvert: (str): write your description
+    """
     linked = [e for e in bmvert.link_edges if not e.link_faces]
     for e in linked:
         linked += [le for v in e.verts if not v.link_faces for le in v.link_edges if le not in linked]
     return linked
 
 def draw_line(self, obj, Bmesh, bm_geom, location):
+    """
+    Draws a line on the given object.
+
+    Args:
+        self: (todo): write your description
+        obj: (todo): write your description
+        Bmesh: (todo): write your description
+        bm_geom: (int): write your description
+        location: (str): write your description
+    """
     if not hasattr(self, 'list_verts'):
         self.list_verts = []
 
@@ -493,6 +567,14 @@ class CharMap:
 
     @staticmethod
     def modal(self, context, event):
+        """
+        Modalign a string
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+            event: (todo): write your description
+        """
         c = event.ascii
         if c:
             if c == ",":
@@ -530,6 +612,13 @@ class SnapUtilitiesLine(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Returns a new preferences.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         preferences = context.user_preferences.addons[__name__].preferences
         return (context.mode in {'EDIT_MESH', 'OBJECT'} and
                 preferences.create_new_obj or
@@ -538,6 +627,14 @@ class SnapUtilitiesLine(bpy.types.Operator):
 
 
     def modal_navigation(self, context, event):
+        """
+        Rotate or update function.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         #TO DO:
         #'View Orbit', 'View Pan', 'NDOF Orbit View', 'NDOF Pan View'
         rv3d = context.region_data
@@ -589,6 +686,13 @@ class SnapUtilitiesLine(bpy.types.Operator):
 
 
     def draw_callback_px(self, context):
+        """
+        Draws the color callback
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # draw 3d point OpenGL in the 3D View
         bgl.glEnable(bgl.GL_BLEND)
 
@@ -654,6 +758,14 @@ class SnapUtilitiesLine(bpy.types.Operator):
         bgl.glColor4f(0.0, 0.0, 0.0, 1.0)
 
     def modal(self, context, event):
+        """
+        Modifies the event on the coordinate of the event.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+            event: (todo): write your description
+        """
         if context.area:
             context.area.tag_redraw()
 
@@ -842,6 +954,14 @@ class SnapUtilitiesLine(bpy.types.Operator):
         return {'RUNNING_MODAL'}
 
     def invoke(self, context, event):
+        """
+        Invoke the command.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         if context.space_data.type == 'VIEW_3D':
             #print('name', __name__, __package__)
             preferences = context.user_preferences.addons[__name__].preferences
@@ -936,6 +1056,13 @@ class PanelSnapUtilities(bpy.types.Panel) :
 #                 context.object.type == 'MESH'))
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         TheCol = layout.column(align = True)
         TheCol.operator("mesh.snap_utilities_line", text = "Line", icon="GREASEPENCIL")
@@ -960,6 +1087,13 @@ class PanelSnapUtilities(bpy.types.Panel) :
         box.prop(addon_prefs, "create_new_obj")
 
 def update_panel(self, context):
+    """
+    Updates the panel.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
     try:
         bpy.utils.unregister_class(PanelSnapUtilities)
     except:
@@ -1035,6 +1169,13 @@ class SnapAddonPreferences(bpy.types.AddonPreferences):
     constrain_shift_color = bpy.props.FloatVectorProperty(name="SHIFT CONSTRAIN", default=(0.8, 0.5, 0.4, 1.0), size=4, subtype="COLOR", min=0, max=1)
 
     def draw(self, context):
+        """
+        Draws the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         layout.label(text="Snap Colors:")
@@ -1075,6 +1216,11 @@ class SnapAddonPreferences(bpy.types.AddonPreferences):
         col.prop(self, "create_new_obj")
 
 def register():
+    """
+    Registers the given panel.
+
+    Args:
+    """
     print('Addon', __name__, 'registered')
     bpy.utils.register_class(SnapAddonPreferences)
     bpy.utils.register_class(SnapUtilitiesLine)
@@ -1084,6 +1230,11 @@ def register():
     update_panel(None, bpy.context)
 
 def unregister():
+    """
+    Unregister the given unregister class.
+
+    Args:
+    """
     bpy.utils.unregister_class(SnapUtilitiesLine)
     bpy.utils.unregister_class(SnapAddonPreferences)
 ##cme ツールシェルフに追加を無効

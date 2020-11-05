@@ -40,11 +40,25 @@ class ExtraMaterialList_PT(Panel):
     #--- Available only for "shading nodes" render
     @classmethod
     def poll(cls, context):
+        """
+        Returns a scene s scene.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         cs = context.scene
         return cs.render.use_shading_nodes
 
     #--- Draw Panel
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         cs = context.scene
         sdata = context.space_data
@@ -178,12 +192,26 @@ class ExtraMaterialList_PT(Panel):
 # Functions to decide if enable/disable navigation buttons
 #-------------------------------------------------------------------------------
 def enable_prev_button(item, item_list):
+    """
+    Determine if a button is pressed.
+
+    Args:
+        item: (todo): write your description
+        item_list: (list): write your description
+    """
     if item != None and len(item_list) > 0:
         return item != item_list[0]
     else:
         return False
 
 def enable_next_button(item, item_list):
+    """
+    Function to enable the next button
+
+    Args:
+        item: (todo): write your description
+        item_list: (list): write your description
+    """
     if item != None and len(item_list) > 0:
         return item != item_list[-1]
     else:
@@ -197,6 +225,13 @@ class del_active_mat(Operator):
     bl_options = {"REGISTER","UNDO"}
 
     def execute(self, context):
+        """
+        Execute a context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         for material in bpy.context.active_object.data.materials:
             material.user_clear()
             bpy.data.materials.remove(material)
@@ -210,6 +245,20 @@ class ExtraMaterialList_UL(UIList):
     bl_idname = "extra_material_list.material_list"
 
     def draw_item(self, context, layout, data, item, icon, active_data, active_propname, index):
+        """
+        Draw item
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+            layout: (str): write your description
+            data: (todo): write your description
+            item: (todo): write your description
+            icon: (todo): write your description
+            active_data: (bool): write your description
+            active_propname: (str): write your description
+            index: (int): write your description
+        """
         props = bpy.context.scene.extra_material_list
 
         # Material name and icon
@@ -243,6 +292,13 @@ class ExtraMaterialList_UL(UIList):
 
 #--- Update the active material when you select another item in the template_list
 def update_active_material(self, context):
+    """
+    Updates the material
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
     try:
         id = bpy.context.scene.extra_material_list.material_id
         if id < len(bpy.data.materials):
@@ -253,6 +309,13 @@ def update_active_material(self, context):
 
 #--- Update the active world shader when you select another item in the template_list
 def update_active_world(self, context):
+    """
+    Updates the world.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
     try:
         id = bpy.context.scene.extra_material_list.world_id
         if id < len(bpy.data.worlds):
@@ -271,6 +334,13 @@ class ExtraMaterialList_PT_EliminateMaterials(Operator):
     bl_description = "Eliminate material duplicates (ending with .001, .002, etc) and replace them with the original material if found."
 
     def execute(self, context):
+        """
+        Execute the analysis
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         print("\nEliminate Material Duplicates:")
         mats = bpy.data.materials
 
@@ -300,6 +370,13 @@ class ExtraMaterialList_PT_EliminateNodeGroups(Operator):
 
     #--- Eliminate node group duplicate with the original group found
     def eliminate(self, node):
+        """
+        Eliminate function
+
+        Args:
+            self: (todo): write your description
+            node: (todo): write your description
+        """
         node_groups = bpy.data.node_groups
 
         # Get the node group name as 3-tuple (base, separator, extension)
@@ -314,6 +391,13 @@ class ExtraMaterialList_PT_EliminateNodeGroups(Operator):
 
     #--- Execute
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         print("\nEliminate Node Group Duplicates:")
 
         mats = list(bpy.data.materials)
@@ -353,6 +437,13 @@ class ExtraMaterialList_PT_Nav(Operator):
         default = 'NEXT')
 
     def execute(self, context):
+        """
+        Execute the world.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         sdata = context.space_data
 
         #--- Navigate in object materials
@@ -409,6 +500,12 @@ class ExtraMaterialList_PT_Nav(Operator):
 #-------------------------------------------------------------------------------
 @persistent
 def update_material_list(context):
+    """
+    Update the material list.
+
+    Args:
+        context: (todo): write your description
+    """
     try:
         props = bpy.context.scene.extra_material_list
 
@@ -478,11 +575,21 @@ class ExtraMaterialList_Props(bpy.types.PropertyGroup):
 # REGISTER/UNREGISTER ADDON CLASSES
 #-------------------------------------------------------------------------------
 def register():
+    """
+    Registers a new scene.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
     bpy.types.Scene.extra_material_list = PointerProperty(type=ExtraMaterialList_Props)
     bpy.app.handlers.scene_update_post.append(update_material_list)
 
 def unregister():
+    """
+    Unregister a module
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)
     del bpy.types.Scene.extra_material_list
     bpy.app.handlers.scene_update_post.remove(update_material_list)

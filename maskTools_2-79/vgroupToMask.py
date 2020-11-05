@@ -11,10 +11,24 @@ class VertexGroupToMask(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
     def execute(self, context):
+        """
+        Executes the current mesh.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         dynatopoEnabled = False
 
@@ -79,10 +93,24 @@ class VertexGroupToMaskAppend(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
     def execute(self, context):
+        """
+        Executes the current mesh.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         dynatopoEnabled = False
 
@@ -148,10 +176,24 @@ class VertexGroupToMaskRemove(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
     def execute(self, context):
+        """
+        Executes the current mesh.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         dynatopoEnabled = False
 

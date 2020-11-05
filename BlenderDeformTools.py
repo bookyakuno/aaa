@@ -30,10 +30,24 @@ class MaskToVertexGroup_x(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
     def execute(self, context):
+        """
+        Executes the topology.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         dynatopoEnabled = False
 
@@ -84,6 +98,11 @@ class MaskToVertexGroup_x(bpy.types.Operator):
 
 
 def mask_to_vertex_group():
+    """
+    Mask the vertex group to a vertex group.
+
+    Args:
+    """
 	bpy.ops.object.mode_set(mode='SCULPT')
 	bpy.ops.paint.hide_show(action='HIDE', area='MASKED')
 	bpy.ops.object.mode_set(mode='EDIT')
@@ -95,6 +114,13 @@ class MaskToVGOperator(bpy.types.Operator):
 	bl_label = "MaskToVertexGroup"
 
 	def execute(self, context):
+     """
+     Executes a new mask.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		mask_to_vertex_group()
 		return {'FINISHED'}
 
@@ -103,6 +129,13 @@ class DeformOperator(bpy.types.Operator):
 	bl_label = "DeformOperator"
 
 	def execute(self, context):
+     """
+     Execute the select ().
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		mask_to_vertex_group()
 		bpy.ops.object.vertex_group_select()
 		saved_location = bpy.context.scene.cursor_location.copy()
@@ -195,6 +228,13 @@ class DeformTools(bpy.types.Panel):
 	bl_region_type = "TOOLS"
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		row_mask = layout.row()
 		row_mask.operator("wm.mask_to_vg_operator", text="Mask to VertexGroup")
@@ -202,12 +242,22 @@ class DeformTools(bpy.types.Panel):
 		row_deform.operator("wm.deform_operator", text="Create DeformBox")
 
 def register():
+    """
+    Register a class : class.
+
+    Args:
+    """
 	bpy.utils.register_class(MaskToVertexGroup_x)
 	bpy.utils.register_class(MaskToVGOperator)
 	bpy.utils.register_class(DeformOperator)
 	bpy.utils.register_class(DeformTools)
 
 def unregister():
+    """
+    Unregister the given unregister class.
+
+    Args:
+    """
 	bpy.utils.unregister_class(MaskToVertexGroup_x)
 	bpy.utils.unregister_class(MaskToVGOperator)
 	bpy.utils.unregister_class(DeformOperator)

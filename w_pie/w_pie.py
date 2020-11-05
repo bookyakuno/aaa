@@ -53,6 +53,13 @@ class add_nurbs_curves(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the layout.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         bpy.context.object.data.resolution_u = 3
@@ -71,6 +78,13 @@ class WireAll(bpy.types.Operator):
     bl_label = "Wire All"
 
     def execute(self, context):
+        """
+        Executes all the actions.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         for obj in bpy.data.objects:
             if obj.show_wire:
@@ -97,6 +111,13 @@ class ProportionalEditObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (True):
@@ -113,6 +134,13 @@ class ProportionalSmoothObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (False) :
             bpy.context.scene.tool_settings.use_proportional_edit_objects = True
@@ -128,6 +156,13 @@ class ProportionalSphereObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (False) :
             bpy.context.scene.tool_settings.use_proportional_edit_objects = True
@@ -143,6 +178,13 @@ class ProportionalRootObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (False) :
             bpy.context.scene.tool_settings.use_proportional_edit_objects = True
@@ -158,6 +200,13 @@ class ProportionalSharpObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (False) :
             bpy.context.scene.tool_settings.use_proportional_edit_objects = True
@@ -173,6 +222,13 @@ class ProportionalLinearObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (False) :
             bpy.context.scene.tool_settings.use_proportional_edit_objects = True
@@ -188,6 +244,13 @@ class ProportionalConstantObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (False) :
             bpy.context.scene.tool_settings.use_proportional_edit_objects = True
@@ -203,6 +266,13 @@ class ProportionalRandomObj(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_proportional_edit_objects == (False) :
             bpy.context.scene.tool_settings.use_proportional_edit_objects = True
@@ -221,6 +291,13 @@ class ProportionalEditEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.scene.tool_settings.proportional_edit != ('DISABLED'):
@@ -235,6 +312,13 @@ class ProportionalConnectedEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.scene.tool_settings.proportional_edit != ('CONNECTED'):
@@ -247,6 +331,13 @@ class ProportionalProjectedEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.scene.tool_settings.proportional_edit != ('PROJECTED'):
@@ -259,6 +350,13 @@ class ProportionalSmoothEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.proportional_edit == ('DISABLED') :
             bpy.context.scene.tool_settings.proportional_edit = 'ENABLED'
@@ -274,6 +372,13 @@ class ProportionalSphereEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.proportional_edit == ('DISABLED') :
             bpy.context.scene.tool_settings.proportional_edit = 'ENABLED'
@@ -289,6 +394,13 @@ class ProportionalRootEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.proportional_edit == ('DISABLED') :
             bpy.context.scene.tool_settings.proportional_edit = 'ENABLED'
@@ -304,6 +416,13 @@ class ProportionalSharpEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.proportional_edit == ('DISABLED') :
             bpy.context.scene.tool_settings.proportional_edit = 'ENABLED'
@@ -319,6 +438,13 @@ class ProportionalLinearEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.proportional_edit == ('DISABLED') :
             bpy.context.scene.tool_settings.proportional_edit = 'ENABLED'
@@ -334,6 +460,13 @@ class ProportionalConstantEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.proportional_edit == ('DISABLED') :
             bpy.context.scene.tool_settings.proportional_edit = 'ENABLED'
@@ -349,6 +482,13 @@ class ProportionalRandomEdt(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Initiate layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.proportional_edit == ('DISABLED') :
             bpy.context.scene.tool_settings.proportional_edit = 'ENABLED'
@@ -367,6 +507,13 @@ class SnapActive(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.scene.tool_settings.use_snap == (True):
@@ -384,6 +531,13 @@ class SnapVolume(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_snap == (False) :
             bpy.context.scene.tool_settings.use_snap = True
@@ -399,6 +553,13 @@ class SnapFace(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_snap == (False) :
             bpy.context.scene.tool_settings.use_snap = True
@@ -414,6 +575,13 @@ class SnapEdge(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_snap == (False) :
             bpy.context.scene.tool_settings.use_snap = True
@@ -429,6 +597,13 @@ class SnapVertex(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_snap == (False) :
             bpy.context.scene.tool_settings.use_snap = True
@@ -444,6 +619,13 @@ class SnapIncrement(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_snap == (False) :
             bpy.context.scene.tool_settings.use_snap = True
@@ -459,6 +641,13 @@ class SnapAlignRotation(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.scene.tool_settings.use_snap_align_rotation == (True) :
             bpy.context.scene.tool_settings.use_snap_align_rotation = False
@@ -476,9 +665,23 @@ class SnapTargetVariable(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll for the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return True
 
     def execute(self, context):
+        """
+        Executes the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.scene.tool_settings.snap_target=self.variable
         return {'FINISHED'}
 
@@ -494,9 +697,23 @@ class OrientationVariable(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll for the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return True
 
     def execute(self, context):
+        """
+        Implementation of the variable.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.space_data.transform_orientation=self.variable
         return {'FINISHED'}
 
@@ -512,9 +729,23 @@ class ShadingVariable(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll for the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return True
 
     def execute(self, context):
+        """
+        Implements context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.space_data.viewport_shade=self.variable
         return {'FINISHED'}
 
@@ -524,6 +755,13 @@ class ShadingSmooth(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if bpy.context.object.mode == "OBJECT":
             bpy.ops.object.shade_smooth()
 
@@ -539,6 +777,13 @@ class ShadingFlat(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if bpy.context.object.mode == "OBJECT":
             bpy.ops.object.shade_flat()
 
@@ -560,9 +805,23 @@ class WireSelectedAll(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Execute all the actions.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         for obj in bpy.data.objects:
             if bpy.context.selected_objects:
@@ -589,6 +848,13 @@ class ToggleGridAxis(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.space_data.show_axis_y = not bpy.context.space_data.show_axis_y
         bpy.context.space_data.show_axis_x = not bpy.context.space_data.show_axis_x
         bpy.context.space_data.show_floor = not bpy.context.space_data.show_floor
@@ -601,6 +867,13 @@ class MeshDisplayOverlays(bpy.types.Menu):
     bl_options = {'REGISTER', 'UNDO'}
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         layout.operator("wm.context_toggle", text="Show Faces", icon='FACESEL').data_path = "object.data.show_faces"
@@ -620,6 +893,13 @@ class AutoSmoothMenu(bpy.types.Menu):
     bl_options = {'REGISTER', 'UNDO'}
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         layout.operator("wm.context_toggle", text="Auto Smooth", icon='MESH_DATA').data_path = "object.data.use_auto_smooth"
         layout.operator("auto.smooth_30", text="Auto Smooth 30", icon='MESH_DATA')
@@ -634,9 +914,23 @@ class AutoSmooth89(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Execute the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.object.data.auto_smooth_angle = 1.55334
         return {'FINISHED'}
 
@@ -648,9 +942,23 @@ class AutoSmooth30(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Executes the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.object.data.auto_smooth_angle = 0.523599
         return {'FINISHED'}
 
@@ -662,9 +970,23 @@ class AutoSmooth45(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Executes the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.object.data.auto_smooth_angle = 0.785398
         return {'FINISHED'}
 
@@ -675,6 +997,13 @@ class NormalsMenu(bpy.types.Menu):
     bl_options = {'REGISTER', 'UNDO'}
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         layout.operator("wm.context_toggle", text="Show Normals Vertex", icon='MESH_DATA').data_path = "object.data.show_normal_vertex"
         layout.operator("wm.context_toggle", text="Show Normals Loop", icon='MESH_DATA').data_path = "object.data.show_normal_vertex"
@@ -689,9 +1018,23 @@ class NormalSize01(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Executes the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.scene.tool_settings.normal_size = 0.1
         return {'FINISHED'}
 
@@ -703,9 +1046,23 @@ class NormalSize02(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.active_object is not None
 
     def execute(self, context):
+        """
+        Execute the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.scene.tool_settings.normal_size = 0.2
         return {'FINISHED'}
 ######################
@@ -720,9 +1077,23 @@ class PivotPointVariable(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll for the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return True
 
     def execute(self, context):
+        """
+        Execute a space.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.space_data.pivot_point = self.variable
         return {'FINISHED'}
 
@@ -733,6 +1104,13 @@ class UsePivotAlign(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the given runtime.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         if bpy.context.space_data.use_pivot_point_align == (False) :
             bpy.context.space_data.use_pivot_point_align = True
@@ -749,6 +1127,13 @@ class ManipTranslate(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.space_data.show_manipulator == (False) :
             bpy.context.space_data.show_manipulator = True
@@ -763,6 +1148,13 @@ class ManipRotate(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.space_data.show_manipulator == (False) :
             bpy.context.space_data.show_manipulator = True
@@ -777,6 +1169,13 @@ class ManipScale(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.space_data.show_manipulator == (False) :
             bpy.context.space_data.show_manipulator = True
@@ -791,6 +1190,13 @@ class TranslateRotate(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.space_data.show_manipulator == (False) :
             bpy.context.space_data.show_manipulator = True
@@ -805,6 +1211,13 @@ class TranslateScale(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.space_data.show_manipulator == (False) :
             bpy.context.space_data.show_manipulator = True
@@ -819,6 +1232,13 @@ class RotateScale(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.space_data.show_manipulator == (False) :
             bpy.context.space_data.show_manipulator = True
@@ -833,6 +1253,13 @@ class TranslateRotateScale(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implements
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.space_data.show_manipulator == (False) :
             bpy.context.space_data.show_manipulator = True
@@ -847,6 +1274,13 @@ class WManupulators(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the command
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.space_data.show_manipulator == (True):
@@ -868,6 +1302,13 @@ class ClassTexturePaint(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes a layout.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode == "EDIT":
@@ -884,6 +1325,13 @@ class ClassWeightPaint(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode == "EDIT":
@@ -900,6 +1348,13 @@ class ClassVertexPaint(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode == "EDIT":
@@ -916,6 +1371,13 @@ class ClassParticleEdit(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute function.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode == "EDIT":
@@ -933,6 +1395,13 @@ class ClassObject(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the given query.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode == "OBJECT":
@@ -948,6 +1417,13 @@ class ClassVertex(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode != "EDIT":
@@ -964,6 +1440,13 @@ class ClassEdge(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode != "EDIT":
@@ -980,6 +1463,13 @@ class ClassFace(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         if bpy.context.object.mode != "EDIT":
@@ -1000,6 +1490,13 @@ class VertsEdges(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.object.mode != "EDIT":
             bpy.ops.object.mode_set(mode="EDIT")
@@ -1015,6 +1512,13 @@ class EdgesFaces(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.object.mode != "EDIT":
             bpy.ops.object.mode_set(mode="EDIT")
@@ -1029,6 +1533,13 @@ class VertsFaces(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.object.mode != "EDIT":
             bpy.ops.object.mode_set(mode="EDIT")
@@ -1043,6 +1554,13 @@ class VertsEdgesFaces(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         if bpy.context.object.mode != "EDIT":
             bpy.ops.object.mode_set(mode="EDIT")
@@ -1058,6 +1576,13 @@ class SelectAllBySelection(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute all the actions.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         bpy.ops.mesh.select_all(action='TOGGLE')
@@ -1075,6 +1600,13 @@ class SplitHorizontal(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the map.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         bpy.ops.screen.area_split(direction='HORIZONTAL')
@@ -1087,6 +1619,13 @@ class SplitVertical(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the map.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         bpy.ops.screen.area_split(direction='VERTICAL')
@@ -1105,6 +1644,14 @@ class JoinArea(bpy.types.Operator):
     min_y = IntProperty()
 
     def modal(self, context, event):
+        """
+        Displays the mouse area.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+            event: (todo): write your description
+        """
         if event.type == 'LEFTMOUSE':
             self.max_x = event.mouse_x
             self.max_y = event.mouse_y
@@ -1115,6 +1662,14 @@ class JoinArea(bpy.types.Operator):
         return {'RUNNING_MODAL'}
 
     def invoke(self, context, event):
+        """
+        Invoke the mouse context.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         self.min_x = event.mouse_x
         self.min_y = event.mouse_y
         context.window_manager.modal_handler_add(self)
@@ -1130,9 +1685,23 @@ class ViewMenu(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll for the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return True
 
     def execute(self, context):
+        """
+        Execute context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.area.type=self.variable
         return {'FINISHED'}
 ##############
@@ -1146,6 +1715,13 @@ class SculptPolish(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         bpy.context.tool_settings.sculpt.brush=bpy.data.brushes['Polish']
         return {'FINISHED'}
@@ -1157,6 +1733,13 @@ class SculptSculptDraw(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         bpy.context.tool_settings.sculpt.brush=bpy.data.brushes['SculptDraw']
         return {'FINISHED'}
@@ -1172,6 +1755,13 @@ class PivotToSelection(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         saved_location = bpy.context.scene.cursor_location.copy()
         bpy.ops.view3d.snap_cursor_to_selected()
         bpy.ops.object.mode_set(mode = 'OBJECT')
@@ -1189,6 +1779,13 @@ class origin_set_cursor_x(bpy.types.Operator):
 	bl_label = "origin_set_cursor_x"
 	bl_options = {'REGISTER', 'UNDO'}
 	def execute(self, context):
+     """
+     Executes the view3 command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		if context.mode == 'EDIT_MESH':
 			bpy.ops.view3d.snap_cursor_to_selected()
@@ -1209,6 +1806,13 @@ class PivotBottom(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implementation of the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
 
         obj = context.active_object
@@ -1281,6 +1885,13 @@ class AlignX(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the operations.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         for vert in bpy.context.object.data.vertices:
             bpy.ops.transform.resize(value=(0, 1, 1), constraint_axis=(True, False, False), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
@@ -1293,6 +1904,13 @@ class AlignY(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implementation of vertices in the graph.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         for vert in bpy.context.object.data.vertices:
             bpy.ops.transform.resize(value=(1, 0, 1), constraint_axis=(False, True, False), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
@@ -1305,6 +1923,13 @@ class AlignZ(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Implementation of vertices in the graph.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         for vert in bpy.context.object.data.vertices:
             bpy.ops.transform.resize(value=(1, 1, 0), constraint_axis=(False, False, True), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
@@ -1321,6 +1946,13 @@ class AlignToX0(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the operations.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.mode_set(mode = 'OBJECT')
 
         for vert in bpy.context.object.data.vertices:
@@ -1336,6 +1968,13 @@ class AlignToY0(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the operations.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.mode_set(mode = 'OBJECT')
 
         for vert in bpy.context.object.data.vertices:
@@ -1351,6 +1990,13 @@ class AlignToZ0(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes operations. engine.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.mode_set(mode = 'OBJECT')
 
         for vert in bpy.context.object.data.vertices:
@@ -1366,6 +2012,13 @@ class AlignXLeft(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         bpy.ops.object.mode_set(mode='OBJECT')
         count = 0
@@ -1394,6 +2047,13 @@ class AlignXRight(bpy.types.Operator):
     bl_label = "Align X Right"
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         bpy.ops.object.mode_set(mode='OBJECT')
         count = 0
@@ -1423,6 +2083,13 @@ class AlignYBack(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         bpy.ops.object.mode_set(mode='OBJECT')
         count = 0
@@ -1452,6 +2119,13 @@ class AlignYFront(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         bpy.ops.object.mode_set(mode='OBJECT')
         count = 0
@@ -1481,6 +2155,13 @@ class AlignZTop(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         bpy.ops.object.mode_set(mode='OBJECT')
         count = 0
@@ -1510,6 +2191,13 @@ class AlignZBottom(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         bpy.ops.object.mode_set(mode='OBJECT')
         count = 0
@@ -1544,6 +2232,13 @@ class DeleteLimitedDissolve(bpy.types.Operator):
 
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.mesh.dissolve_limited(angle_limit=3.14159, use_dissolve_boundaries=False)
         return {'FINISHED'}
 
@@ -1558,6 +2253,13 @@ class InsertAutoKeyframe(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         if bpy.context.scene.tool_settings.use_keyframe_insert_auto == True :
             bpy.context.scene.tool_settings.use_keyframe_insert_auto = False
@@ -1578,6 +2280,13 @@ class ApplyTransformLocation(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute a context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.transform_apply(location=True, rotation=False, scale=False)
         return {'FINISHED'}
 
@@ -1588,6 +2297,13 @@ class ApplyTransformRotation(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute operations
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.transform_apply(location=False, rotation=True, scale=False)
         return {'FINISHED'}
 
@@ -1598,6 +2314,13 @@ class ApplyTransformScale(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute operations
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
         return {'FINISHED'}
 
@@ -1608,6 +2331,13 @@ class ApplyTransformRotationScale(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute operations
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
         return {'FINISHED'}
 
@@ -1618,6 +2348,13 @@ class ApplyTransformAll(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the object.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
         return {'FINISHED'}
 
@@ -1628,6 +2365,13 @@ class ClearMenu(bpy.types.Menu):
     bl_label = "Clear Menu"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         layout.operator("object.location_clear", text="Clear Location", icon='MAN_TRANS')
         layout.operator("object.rotation_clear", text="Clear Rotation", icon='MAN_ROT')
@@ -1641,6 +2385,13 @@ class ClearAll(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.location_clear()
         bpy.ops.object.rotation_clear()
         bpy.ops.object.scale_clear()
@@ -1656,6 +2407,13 @@ class ExternalData(bpy.types.Menu):
     bl_label = "External Data"
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         layout.operator("file.autopack_toggle", text="Automatically Pack Into .blend")
@@ -1675,6 +2433,13 @@ class FileIncrementalSave(bpy.types.Operator):
     bl_options = {"REGISTER"}
 
     def execute(self, context):
+        """
+        This is the main function.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         f_path = bpy.data.filepath
         if f_path.find("_") != -1:
             str_nb = f_path.rpartition("_")[-1].rpartition(".blend")[0]
@@ -1705,6 +2470,13 @@ class PerspOrthoView(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute a single view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.view3d.view_persportho()
         return {'FINISHED'}
 #######################################################
@@ -1718,6 +2490,13 @@ class LockCameraTransforms(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if bpy.context.object.lock_rotation[0] == False:
             bpy.context.object.lock_rotation[0] = True
             bpy.context.object.lock_rotation[1] = True
@@ -1750,6 +2529,13 @@ class ActiveCameraSelection(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Executes the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.data.objects[context.scene.cameratoto].select=True
         bpy.ops.view3d.object_as_camera()
         return {'FINISHED'}
@@ -1761,6 +2547,13 @@ class CameraSelection(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute the camera.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         for cam in bpy.data.cameras:
             bpy.ops.object.select_camera()
@@ -1776,6 +2569,13 @@ class PieObjectEditotherModes(Menu):
     bl_label = "Select Other Modes"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -1797,6 +2597,13 @@ class PieVertexEdgesFacesModes(Menu):
     bl_label = "Select Multi Components"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -1820,6 +2627,13 @@ class PieObjectEditMode(Menu):
     bl_label = "Mesh Select Mode"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         ob = context
@@ -1891,6 +2705,13 @@ class PieAnimationEtc(Menu):
     bl_label = "Animation Etc"
 
     def draw(self, context):
+        """
+        Draw the context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -1915,6 +2736,13 @@ class PieFilePropertiesEtc(Menu):
     bl_label = "Pie File Properties..."
 
     def draw(self, context):
+        """
+        Draw the context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -1939,6 +2767,13 @@ class PieViewallSelGlobEtc(Menu):
     bl_label = "Pie View All Sel Glob..."
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -1962,6 +2797,13 @@ class PieAreaViews(Menu):
     bl_label = "Views"
 
     def draw(self, context):
+        """
+        Draw the context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2017,6 +2859,13 @@ class PieCamera(Menu):
     bl_label = "Pie Camera"
 
     def draw(self, context):
+        """
+        Draw the menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         ob = bpy.context.object
@@ -2047,6 +2896,13 @@ class PieViewNumpad(Menu):
     bl_label = "Views Ortho"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2073,6 +2929,13 @@ class PieSculptPie(Menu):
     bl_label = "Pie Sculpt"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2098,6 +2961,13 @@ class PieSculpttwo(Menu):
     bl_label = "Pie Sculpt 2"
 
     def draw(self, context):
+        """
+        Draw the menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2137,6 +3007,13 @@ class PieOriginPivot(Menu):
     bl_label = "Pie Origin/Cursor"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2165,6 +3042,13 @@ class PiePivotPoint(Menu):
     bl_label = "Pivot Point"
 
     def draw(self, context):
+        """
+        Draws context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2188,6 +3072,13 @@ class OriginPivotMenu(Menu):
     bl_label = "Origin Pivot Menu"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2211,6 +3102,13 @@ class PieManipulator(Menu):
     bl_label = "Pie Manipulator"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2236,6 +3134,13 @@ class PieSnaping(Menu):
     bl_label = "Pie Snapping"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2261,6 +3166,13 @@ class SnapTargetMenu(Menu):
     bl_label = "Snap Target Menu"
 
     def draw(self, context):
+        """
+        Draws context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2305,6 +3217,13 @@ class PieOrientation(Menu):
     bl_label = "Pie Orientation"
 
     def draw(self, context):
+        """
+        Draw the context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
 
         pie = layout.menu_pie()
@@ -2332,6 +3251,13 @@ class PieShadingView(Menu):
     bl_label = "Pie Shading"
 
     def draw(self, context):
+        """
+        Draw the context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2359,6 +3285,13 @@ class PieObjectShading2(Menu):
     bl_label = "Pie Shading Object Others"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2383,6 +3316,13 @@ class PieObjectShading(Menu):
     bl_label = "Pie Shading Object"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2410,6 +3350,13 @@ class PieProportionalObj(Menu):
     bl_label = "Pie Proportional Edit Obj"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2435,6 +3382,13 @@ class PieProportionalEdt(Menu):
     bl_label = "Pie Proportional Edit"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2464,6 +3418,13 @@ class PieAlign(Menu):
     bl_label = "Pie Align"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2507,6 +3468,13 @@ class PieDelete(Menu):
     bl_label = "Pie Delete"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2540,6 +3508,13 @@ class PieApplyTransforms(Menu):
     bl_label = "Pie Apply Transforms"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2568,6 +3543,13 @@ class PieSelectionsOM(Menu):
     bl_label = "Pie Selections Object Mode"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         pie.operator("object.select_camera", text="Select Camera", icon='CAMERA_DATA')
@@ -2588,6 +3570,13 @@ class PieSelectionsEM(Menu):
     bl_label = "Pie Selections Edit Mode"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2638,6 +3627,13 @@ class PieTextEditor(Menu):
     bl_label = "Pie Text Editor"
 
     def draw(self, context):
+        """
+        Draw the menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         if bpy.context.area.type == 'TEXT_EDITOR':
@@ -2663,6 +3659,13 @@ class PieAnimation(Menu):
     bl_label = "Pie Animation"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -2692,6 +3695,13 @@ class Pieview_misc(Menu):
     bl_label = "Views misc"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
 
@@ -2742,11 +3752,25 @@ class Pieview_misc(Menu):
 
 #Search Menu
 def SearchMenu(self, context):
+    """
+    Displays a menu.
+
+    Args:
+        self: (todo): write your description
+        context: (dict): write your description
+    """
     layout = self.layout
 
     layout.operator("wm.search_menu", text="", icon ='VIEWZOOM')
 
 def view3d_Search_menu(self, context):
+    """
+    View the given context menu.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
     layout = self.layout
 
     layout.menu("SearchMenu")

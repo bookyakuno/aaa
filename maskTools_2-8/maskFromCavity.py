@@ -12,6 +12,13 @@ class MaskFromCavity(bpy.types.Operator) :
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -25,6 +32,13 @@ class MaskFromCavity(bpy.types.Operator) :
 
 
     def execute(self, context):
+        """
+        Execute the context menu.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         mask_cavity_angle = context.scene.mask_cavity_angle # update property from user input
 
@@ -106,6 +120,13 @@ class MaskFromEdges(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -119,6 +140,13 @@ class MaskFromEdges(bpy.types.Operator):
 
 
     def execute(self, context):
+        """
+        Execute the edges.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         mask_edge_angle = context.scene.mask_edge_angle # update property from user input
 
@@ -195,6 +223,13 @@ class MaskSmoothAll(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -203,6 +238,13 @@ class MaskSmoothAll(bpy.types.Operator):
 
 
     def execute(self, context):
+        """
+        Execute a mask on the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         mask_smooth_strength = context.scene.mask_smooth_strength # update property from user input
 
@@ -272,12 +314,26 @@ class MaskFat(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
     bpy.types.Scene.mask_fat_repeat = bpy.props.IntProperty(name = "Mask Fat Repeat", default = 1)
 
     def execute(self, context):
+        """
+        Executes the operations.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         mask_fat_repeat = context.scene.mask_fat_repeat # update property from user input
 
 
@@ -313,12 +369,26 @@ class MaskLess(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
     bpy.types.Scene.mask_less_repeat = bpy.props.IntProperty(name = "Mask Less Repeat", default = 1)
 
 
     def execute(self, context):
+        """
+        Executes the operations on the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         mask_less_repeat = context.scene.mask_less_repeat # update property from user input
 
 
@@ -355,11 +425,25 @@ class MaskSharp(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
 
     def execute(self, context):
+        """
+        Execute the operations.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
 
         dynatopoEnabled = False
@@ -399,6 +483,13 @@ class MaskSharpThick(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -409,6 +500,13 @@ class MaskSharpThick(bpy.types.Operator):
 
 
     def execute(self, context):
+        """
+        Execute the operations on the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         mask_sharp_thick = context.scene.mask_sharp_thick # update property from user input
 
 
@@ -442,11 +540,25 @@ class MaskLattice(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
     bpy.types.Scene.mask_sharp_thick = bpy.props.IntProperty(name = "Mask Sharp Thick", default = 50, min = 0)
 
     def execute(self, context):
+        """
+        Execute all the actions.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         mask_sharp_thick = context.scene.mask_sharp_thick # update property from user input
 
 
@@ -594,10 +706,24 @@ class MaskArmture(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
     def execute(self, context):
+        """
+        Executes the operations on the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         mask_sharp_thick = context.scene.mask_sharp_thick # update property from user input
 
 
@@ -644,11 +770,25 @@ class MaskPolygonRemove(bpy.types.Operator):
     @classmethod
 
     def poll(cls, context):
+        """
+        Poll for active mode.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
 
         return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
 
     def execute(self, context):
+        """
+        Executes the operations in the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
 
         dynatopoEnabled = False
@@ -674,6 +814,11 @@ class MaskPolygonRemove(bpy.types.Operator):
 
 
 def register():
+    """
+    Registers a mask with the mask.
+
+    Args:
+    """
 
     bpy.types.Scene.mask_edge_angle = MaskFromEdges.mask_edge_angle
 
@@ -692,6 +837,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister the mask.
+
+    Args:
+    """
 
     bpy.types.Scene.mask_edge_angle
 

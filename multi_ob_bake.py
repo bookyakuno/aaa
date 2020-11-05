@@ -42,6 +42,13 @@ class Wazou_fast_skin_x(bpy.types.AddonPreferences):
 	# bpy.types.Scene.Enable_Tab_FK_01 = bpy.props.BoolProperty(default=False)
 
 	def draw(self, context):
+     """
+     Draw context
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 
 
@@ -67,6 +74,13 @@ class multi_ob_bake(bpy.types.Operator):
 	bl_label = "multi_ob_bake"
 	bl_options = {'REGISTER', 'UNDO'}
 	def execute(self, context):
+     """
+     Implementation of this method.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		#ターゲット用オブジェクト複製
@@ -121,6 +135,13 @@ class multi_ob_bake(bpy.types.Operator):
 
 # Menu
 def multi_ob_bake_ui(self, context):
+    """
+    Bake layout.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
 
 	layout = self.layout
 
@@ -144,6 +165,11 @@ def multi_ob_bake_ui(self, context):
 
 
 def register():
+    """
+    Register the : class.
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 
 	# bpy.utils.register_class(multi_ob_bake)
@@ -151,6 +177,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister the module.
+
+    Args:
+    """
 	bpy.utils.unregister_module(__name__)
 
 	# bpy.utils.unregister_class(multi_ob_bake)

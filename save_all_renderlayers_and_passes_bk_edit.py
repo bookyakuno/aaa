@@ -52,6 +52,13 @@ class save_images(bpy.types.Panel):
     bl_region_type = 'TOOLS'
 
     def draw( self, context) :
+        """
+        Draw networklayout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         folder_props = context.scene.folder_props
 
         layout = self.layout
@@ -81,9 +88,22 @@ class create_nodes( bpy.types.Operator ):
 
     @classmethod
     def poll( self, context ):
+        """
+        Poll the current scene.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         return context.scene.use_nodes
 
     def find_base_name( self ):
+        """
+        Find the base name for the base name of the base. bpy. bpy.
+
+        Args:
+            self: (todo): write your description
+        """
         blendfile = bpy.path.basename(bpy.data.filepath)
 
         pattern   = '^([\d\w_-]+)(\.blend)$'
@@ -97,6 +117,14 @@ class create_nodes( bpy.types.Operator ):
         return( basename )
 
     def get_layers_and_passes( self, context, basename ):
+        """
+        Get all layers for this image.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            basename: (str): write your description
+        """
         rl = context.scene.render.layers
         use_folders = context.scene.folder_props.create_folders
 
@@ -233,6 +261,20 @@ class create_nodes( bpy.types.Operator ):
     def create_output_per_pass(
         self, context, tree, links, node, blver, layers, rl, output_number
     ):
+        """
+        Create a performs pass pass for a given context.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            tree: (todo): write your description
+            links: (str): write your description
+            node: (todo): write your description
+            blver: (str): write your description
+            layers: (list): write your description
+            rl: (str): write your description
+            output_number: (int): write your description
+        """
         for rpass in layers[rl]:
             ## Create a new file output node
 
@@ -270,6 +312,13 @@ class create_nodes( bpy.types.Operator ):
         return output_number
 
     def execute( self, context ):
+        """
+        Execute the layers of the layers.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         basename    = self.find_base_name()
         layers      = self.get_layers_and_passes( context, basename )
 
@@ -360,10 +409,20 @@ class folder_options( bpy.types.PropertyGroup ):
     )
 
 def register():
+    """
+    Registers the modules in the folder.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
     bpy.types.Scene.folder_props = bpy.props.PointerProperty(
         type = folder_options
     )
 
 def unregister():
+    """
+    Unregister the module.
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)

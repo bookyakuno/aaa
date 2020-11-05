@@ -42,12 +42,24 @@ bl_info = {
 
 
 def _call_globals(attr_name):
+    """
+    Call all globals in the given attribute name.
+
+    Args:
+        attr_name: (str): write your description
+    """
 	for m in globals().values():
 		if hasattr(m, attr_name):
 			getattr(m, attr_name)()
 
 
 def _flush_modules(pkg_name):
+    """
+    Remove all the modules ::
+
+    Args:
+        pkg_name: (str): write your description
+    """
 	pkg_name = pkg_name.lower()
 	for k in tuple(sys.modules.keys()):
 		if k.lower().startswith(pkg_name):
@@ -74,6 +86,13 @@ class w_pie_Prefs(bpy.types.AddonPreferences):
 	bpy.types.Scene.Enable_Tab_03 = bpy.props.BoolProperty(default=False)
 
 	def draw(self, context):
+     """
+     Draw the layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 
 		layout.prop(context.scene, "Enable_Tab_01", text="Info", icon="QUESTION")
@@ -237,6 +256,11 @@ class w_pie_Prefs(bpy.types.AddonPreferences):
 
 # 翻訳辞書の取得
 def GetTranslationDict():
+    """
+    Reads a dictionary of translations
+
+    Args:
+    """
 	dict = {}
 	path = os.path.join(os.path.dirname(__file__), "TranslationDictionary.csv")
 	with codecs.open(path, 'r', 'utf-8') as f:
@@ -270,6 +294,11 @@ def GetTranslationDict():
 addon_keymaps = []
 
 def register():
+    """
+    Registers a new translation.
+
+    Args:
+    """
 	bpy.utils.register_class(w_pie_Prefs)
 	bpy.utils.register_module(__name__)
 	# bpy.app.translations.register(__name__, translation_dict)   # 辞書の登録
@@ -417,6 +446,11 @@ def register():
 
 # Register / Unregister Classes
 def unregister():
+    """
+    Unregisters all registered translations.
+
+    Args:
+    """
 	bpy.utils.unregister_class(w_pie_Prefs)
 	bpy.utils.unregister_module(__name__)
 	# bpy.app.translations.unregister(__name__)   # 辞書の削除

@@ -93,6 +93,13 @@ class info_header_useful_MenuPrefs(bpy.types.AddonPreferences):
     #         description="header_color",
     #         default=False)
 	def draw(self, context):
+     """
+     Draw the layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		layout = self.layout
@@ -133,6 +140,13 @@ class RecoverLatestAutoSave_x(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Execute a dictionary of all the database files.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		tempPath = context.user_preferences.filepaths.temporary_directory
 		lastFile = None
 		for fileName in fnmatch.filter(os.listdir(tempPath), "*.blend"):
@@ -161,6 +175,13 @@ class INFO_HT_header_recent_files_x(bpy.types.Menu):
 	bl_label = "Recent Files"
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 		recent_files = os.path.join(bpy.utils.user_resource('CONFIG'), "recent-files.txt")
 		file = codecs.open(recent_files, 'r', 'utf-8-sig')
@@ -185,6 +206,13 @@ class INFO_HT_header_recent_files_x(bpy.types.Menu):
 
 # ヘッダーに項目追加
 def veiw3d_header_menu_x(self, context):
+    """
+    Display the x - axis.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
 	layout = self.layout
 
 	window = context.window
@@ -205,6 +233,12 @@ def veiw3d_header_menu_x(self, context):
 	texed = bpy.context.user_preferences.themes[current_theme].view_3d
 
 	def hex_to_rgb_dyn(rgb_str):
+     """
+     Convert a hexadecimal string to a tuple.
+
+     Args:
+         rgb_str: (str): write your description
+     """
 	    int_tuple = struct.unpack('BBB', bytes.fromhex(rgb_str))
 	    return tuple([val/255 for val in int_tuple])
 	if context.mode == 'SCULPT':
@@ -361,6 +395,13 @@ def veiw3d_header_menu_x(self, context):
 
 # ヘッダーに項目追加
 def info_header_menu_x(self, context):
+    """
+    Display the x - axis header.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
 
 	layout = self.layout
 
@@ -392,6 +433,12 @@ def info_header_menu_x(self, context):
 		texed = bpy.context.user_preferences.themes[current_theme].view_3d
 
 		def hex_to_rgb_auto_key(rgb_str):
+      """
+      Convert a hexadecimal color string into a tuple.
+
+      Args:
+          rgb_str: (str): write your description
+      """
 		    int_tuple = struct.unpack('BBB', bytes.fromhex(rgb_str))
 		    return tuple([val/255 for val in int_tuple])
 
@@ -557,6 +604,13 @@ class GROUP_MT_specials_x(bpy.types.Menu):
 	bl_label = "Group Specials"
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 
 #        row.prop(group, "name", text="")
@@ -585,6 +639,11 @@ class GROUP_MT_specials_x(bpy.types.Menu):
 
 
 def register():
+    """
+    Registers the menu with the application.
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 	bpy.types.INFO_HT_header.prepend(info_header_menu_x)
 	bpy.types.VIEW3D_MT_editor_menus.prepend(veiw3d_header_menu_x)
@@ -593,6 +652,11 @@ def register():
 	bpy.app.translations.register(__name__, translation_dict)   # 辞書の登録
 
 def unregister():
+    """
+    Unregister the console.
+
+    Args:
+    """
 	bpy.utils.unregister_module(__name__)
 	bpy.types.INFO_HT_header.remove(info_header_menu_x)
 	# bpy.types.INFO_HT_header.remove(header_color_change)

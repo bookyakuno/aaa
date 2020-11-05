@@ -29,6 +29,13 @@ class key_copypae_xPrefs(bpy.types.AddonPreferences):
     bl_idname = __name__
     bpy.types.Scene.Enable_Tab_01 = bpy.props.BoolProperty(default=False)
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         layout.prop(context.scene, "Enable_Tab_01", text="Info", icon="QUESTION")
         if context.scene.Enable_Tab_01:
@@ -54,6 +61,13 @@ class origin_set_cursor_x(bpy.types.Operator):
     bl_label = "origin_set_cursor_x"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Executes the view3 command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         if context.mode == 'EDIT_MESH':
             bpy.ops.view3d.snap_cursor_to_selected()
@@ -77,6 +91,13 @@ class dope_frame_set_end(bpy.types.Operator):
     bl_label = "dope_frame_set_end"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute a new context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.view_menu(variable="TIMELINE")
         bpy.ops.time.end_frame_set()
         bpy.ops.object.view_menu(variable="DOPESHEET_EDITOR")
@@ -86,6 +107,13 @@ class dope_frame_set_start(bpy.types.Operator):
     bl_label = "dope_frame_set_start"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Creates the context menu.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.view_menu(variable="TIMELINE")
         bpy.ops.time.start_frame_set()
         bpy.ops.object.view_menu(variable="DOPESHEET_EDITOR")
@@ -94,6 +122,13 @@ class play_hide(bpy.types.Operator):
     bl_idname = "object.play_hide"
     bl_label = "PLAY & HIDE"
     def execute(self, context):
+        """
+        Execute the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if (bpy.context.screen.is_animation_playing == False):
             	bpy.context.space_data.show_only_render = True
             	bpy.ops.screen.animation_play(reverse=False, sync=False)
@@ -103,6 +138,13 @@ class play_hide(bpy.types.Operator):
         return {'FINISHED'}
 # ヘッダーに項目追加
 def play_hide_menu(self, context):
+    """
+    Play a menu.
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
 	layout = self.layout
 	col = layout.column()
 	if (bpy.context.screen.is_animation_playing == False):
@@ -114,6 +156,13 @@ class key_constant_col(bpy.types.Operator):
     bl_label = "key_constant_col"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # Message
         if (context.active_object):
             self.report(type={"INFO"}, message="CONSTANT")
@@ -125,6 +174,13 @@ class key_linear_col(bpy.types.Operator):
     bl_label = "key_linear_col"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # Message
         if (context.active_object):
             self.report(type={"INFO"}, message="LINEAR")
@@ -136,6 +192,13 @@ class key_bezier_col(bpy.types.Operator):
     bl_label = "key_bezier_col"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # Message
         if (context.active_object):
             self.report(type={"INFO"}, message="BEZIER")
@@ -153,6 +216,13 @@ class DeleteUnmassage_xxx(bpy.types.Operator):
 	bl_label = "Silent_Key_Del"
 	bl_options = {'REGISTER', 'UNDO'}
 	def execute(self, context):
+     """
+     Execute the given execution context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		if (context.active_object):
 		    self.report(type={"INFO"}, message="Silent_Key_Del")			# Message
 		bpy.ops.anim.keyframe_delete_v3d()
@@ -162,6 +232,13 @@ class DeleteUnmassage_graph_silent_del(bpy.types.Operator):
 	bl_label = "silent_graph_Key_Del"
 	bl_options = {'REGISTER', 'UNDO'}
 	def execute(self, context):
+     """
+     Execute the given the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		if (context.active_object):
 		    self.report(type={"INFO"}, message="Silent_Key_Del")			# Message
 		bpy.ops.graph.delete()
@@ -171,6 +248,13 @@ class bone_roll_0(bpy.types.Operator):
     bl_label = "bone_roll_0"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute a query.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.context.object.data.roll = 0
         return {'FINISHED'}
 class curve_add_point(bpy.types.Operator):
@@ -178,6 +262,13 @@ class curve_add_point(bpy.types.Operator):
     bl_label = "curve_add_point"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.curve.select_next()
         bpy.ops.curve.subdivide()
         return {'FINISHED'}
@@ -186,6 +277,13 @@ class key_dope_cut_x(bpy.types.Operator):
     bl_label = "key_dope_cut_x"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute the given operations.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # Message
         if (context.active_object):
             self.report(type={"INFO"}, message="key_dope_cut_x")
@@ -197,6 +295,13 @@ class key_cut_x(bpy.types.Operator):
     bl_label = "key_cut_x"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Executes the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # Message
         if (context.active_object):
             self.report(type={"INFO"}, message="key_cut_x")
@@ -214,6 +319,13 @@ class key_copy_x(bpy.types.Operator):
     bl_label = "key_copy_x"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Executes the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # Message
         if (context.active_object):
             self.report(type={"INFO"}, message="key_copy_x")
@@ -230,6 +342,13 @@ class key_paste_x(bpy.types.Operator):
     bl_label = "key_paste_x"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute the command.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if (context.active_object):
             self.report(type={"INFO"}, message="key_paste_x")			# Message
         bpy.ops.object.view_menu(variable="DOPESHEET_EDITOR")
@@ -241,6 +360,13 @@ class key_move_current_x(bpy.types.Operator):
     bl_label = "key_move_current_x"
     bl_options = {'REGISTER', 'UNDO'}
     def execute(self, context):
+        """
+        Execute the given context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         # if (context.active_object):
         self.report(type={"INFO"}, message="key_move_current_x")			# Message
         bpy.ops.action.copy()
@@ -252,6 +378,13 @@ class key_del_x(bpy.types.Operator):
 	bl_label = "key_del_x"
 	bl_options = {'REGISTER', 'UNDO'}
 	def execute(self, context):
+     """
+     Execute the given execution context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		if (context.active_object):
 		    self.report(type={"INFO"}, message="key_del_x")			# Message
 		bpy.ops.anim.keyframe_delete_v3d() #これが実際に削除するやつ。普通にAlt + Iから実行する方は、『警告 + この文』を実行しているので、この文だけを実行させる
@@ -261,6 +394,13 @@ class key_del_graph_x(bpy.types.Operator):
 	bl_label = "silent_graph_Key_Del"
 	bl_options = {'REGISTER', 'UNDO'}
 	def execute(self, context):
+     """
+     Execute the given the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		if (context.active_object):
 		    self.report(type={"INFO"}, message="key_del_graph_x")			# Message
 		bpy.ops.graph.delete()
@@ -271,6 +411,13 @@ class only_select(bpy.types.Operator):
 	bl_label = "only_select"
 	bl_options = {'REGISTER', 'UNDO'}
 	def execute(self, context):
+     """
+     Executes the given context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.object.editmode_toggle()
 		bpy.ops.view3d.local_view_ex()
 		bpy.ops.object.editmode_toggle()
@@ -279,6 +426,11 @@ class only_select(bpy.types.Operator):
         # store keymaps here to access after registration
 addon_keymaps = []
 def register():
+    """
+    Register a new addon.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
     # ヘッダーメニューに項目追加
     bpy.types.VIEW3D_PT_view3d_display.prepend(play_hide_menu)
@@ -328,6 +480,11 @@ def register():
     addon_keymaps.append((km, kmi))
 
 def unregister():
+    """
+    Removes all registered addon.
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)
     # handle the keymap
     for km, kmi in addon_keymaps:

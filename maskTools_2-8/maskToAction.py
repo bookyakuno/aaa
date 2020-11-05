@@ -33,6 +33,13 @@ class MaskModSmooth(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -40,6 +47,13 @@ class MaskModSmooth(bpy.types.Operator):
 	bpy.types.Scene.maskmod_smooth_apply = bpy.props.BoolProperty(name = "Smooth Apply", default = True)
 
 	def execute(self, context):
+     """
+     Execute a list of the given context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		maskmod_smooth_strength = context.scene.maskmod_smooth_strength # update property from user input
 		maskmod_smooth_apply = context.scene.maskmod_smooth_apply # update property from user input
 
@@ -75,6 +89,13 @@ class MaskModDisplace(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -90,6 +111,13 @@ class MaskModDisplace(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Execute the operations that mask.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		maskmod_displace_strength = context.scene.maskmod_displace_strength # update property from user input
 		maskmod_displace_apply = context.scene.maskmod_displace_apply # update property from user input
 
@@ -143,6 +171,13 @@ class MaskModSolidify(bpy.types.Operator):
 
 
 	def execute(self, context):
+     """
+     Executes the mask.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		maskmod_solidify_thickness = context.scene.maskmod_solidify_thickness # update property from user input
 		maskmod_solidify_apply = context.scene.maskmod_solidify_apply # update property from user input
 
@@ -186,6 +221,13 @@ class MaskExturde(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
@@ -194,6 +236,13 @@ class MaskExturde(bpy.types.Operator):
 	bpy.types.Scene.mask_exturde_edgerelax = bpy.props.BoolProperty(name = "Exturde Edge Relax", default = True)
 
 	def execute(self, context):
+     """
+     Executes a single mask.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		mask_exturde_volume = context.scene.mask_exturde_volume # update property from user input
 		mask_exturde_edgerelax = context.scene.mask_exturde_edgerelax # update property from user input
 
@@ -235,10 +284,24 @@ class MaskDuplicate(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		# mask_sharp_thick = context.scene.mask_sharp_thick # update property from user input
 
 
@@ -279,10 +342,24 @@ class MaskSeparate(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 
 	def execute(self, context):
+     """
+     Executes the operations.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		# mask_sharp_thick = context.scene.mask_sharp_thick # update property from user input
 
 
@@ -317,11 +394,25 @@ class MaskOutlinerelax(bpy.types.Operator):
 	@classmethod
 
 	def poll(cls, context):
+     """
+     Poll for active mode.
+
+     Args:
+         cls: (todo): write your description
+         context: (dict): write your description
+     """
 
 		return context.active_object is not None and context.active_object.mode == 'SCULPT'
 	bpy.types.Scene.mask_outlinerelax_remove_doubles = bpy.props.FloatProperty(name = "Exturde Volume", default = 0.00, min=0, max=10)
 
 	def execute(self, context):
+     """
+     Execute mask mask. mask.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		# mask_sharp_thick = context.scene.mask_sharp_thick # update property from user input
 		mask_outlinerelax_remove_doubles = context.scene.mask_outlinerelax_remove_doubles # update property from user input
 
@@ -353,6 +444,13 @@ class MaskOpenall(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Execute the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		if context.screen.open_all == False:
 			bpy.context.screen.open_vgroup = True
 			bpy.context.screen.open_mask = True
@@ -383,6 +481,11 @@ class MaskOpenall(bpy.types.Operator):
 
 
 def register():
+    """
+    Register the masking mask.
+
+    Args:
+    """
 
 	bpy.types.Scene.mask_outlinerelax_remove_doubles = MaskModSmooth.mask_outlinerelax_remove_doubles
 	bpy.types.Scene.mask_exturde_volume = MaskModSmooth.mask_exturde_volume
@@ -399,6 +502,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister a mask from the mask.
+
+    Args:
+    """
 
 	bpy.types.Scene.mask_outlinerelax_remove_doubles
 	bpy.types.Scene.mask_exturde_volume

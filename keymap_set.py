@@ -97,6 +97,13 @@ module_updated = set()
 
 
 def reload_addon(context, module_name):
+    """
+    Reloads the given module.
+
+    Args:
+        context: (list): write your description
+        module_name: (str): write your description
+    """
 	addons = context.user_preferences.addons
 	if module_name not in addons:
 		return False
@@ -151,6 +158,13 @@ class reveal_no_select(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Executes the current context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		obj = context.object
 		bm = bmesh.from_edit_mesh(obj.data)
 
@@ -179,6 +193,13 @@ class reveal_no_select_object(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Executes the view.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		obj = context.object
@@ -210,6 +231,13 @@ class view_selected_or_all(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Execute a new context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		if context.mode =='EDIT_MESH':
 			bpy.ops.object.vertex_group_assign_new()
 			bpy.context.object.vertex_groups.active.name = "vgroups"
@@ -237,6 +265,13 @@ class WM_OT_addon_reload_all_x(bpy.types.Operator):
 	bl_description = 'Reload updated add-ons'
 
 	def execute(self, context):
+     """
+     Execute the load balancer addon.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		addons = context.user_preferences.addons
 		check_update()
 		result = False
@@ -257,6 +292,13 @@ class ViewSelected_smart(bpy.types.Operator):
 	bl_options = {'REGISTER'}
 
 	def execute(self, context):
+     """
+     Creates a view.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		pre_view_location = context.region_data.view_location[:]
 		smooth_view = context.user_preferences.view.smooth_view
 		context.user_preferences.view.smooth_view = 0
@@ -282,6 +324,13 @@ class object_delete_silent(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Deletes the given context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.object.delete()
 		return {'FINISHED'}
 
@@ -292,6 +341,13 @@ class graph_delete_silent(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Deletes a graph from the database.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.graph.delete()
 		return {'FINISHED'}
 
@@ -302,6 +358,13 @@ class action_delete_silent(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Deletes the given context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		bpy.ops.action.delete()
 		return {'FINISHED'}
 
@@ -313,6 +376,13 @@ class DeleteBySelectMode_x(bpy.types.Operator):
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
+     """
+     Execute the given context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		mode = context.tool_settings.mesh_select_mode[:]
 		if (mode[0]):
 			bpy.ops.mesh.delete(type="VERT")
@@ -404,6 +474,13 @@ class KeymapSetMenuPrefs(bpy.types.AddonPreferences):
 
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		user_preferences = context.user_preferences
 		addon_prefs = user_preferences.addons[__name__].preferences
@@ -639,6 +716,14 @@ transform_keymap = []
 ################################################################
 # # # # # # # # プロパティの指定に必要なもの
 def kmi_props_setattr(kmi_props, attr, value):
+    """
+    Set kmi_props_props
+
+    Args:
+        kmi_props: (todo): write your description
+        attr: (str): write your description
+        value: (todo): write your description
+    """
 	try:
 		setattr(kmi_props, attr, value)
 	except AttributeError:
@@ -652,6 +737,11 @@ def kmi_props_setattr(kmi_props, attr, value):
 #------------------- REGISTER ------------------------------
 
 def register():
+    """
+    Register a new addon.
+
+    Args:
+    """
 	bpy.utils.register_module(__name__)
 	wm = bpy.context.window_manager
 	if wm.keyconfigs.addon:
@@ -2085,6 +2175,11 @@ def register():
 
 
 def unregister():
+    """
+    Removes all the dashboard.
+
+    Args:
+    """
 	bpy.utils.unregister_module(__name__)
 	bpy.app.translations.unregister(__name__)   # 辞書の削除
 

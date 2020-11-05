@@ -61,6 +61,12 @@ class NamedLayers(PropertyGroup):
 # Stupid, but only solution currently is to use a handler to init that layers collection...
 @persistent
 def check_init_data(scene):
+    """
+    Check if a scene exists.
+
+    Args:
+        scene: (str): write your description
+    """
     namedlayers = scene.namedlayers
     if namedlayers.use_init:
         while namedlayers.layers:
@@ -88,9 +94,23 @@ class SCENE_OT_namedlayer_group_add(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Returns true if the context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return bool(context.scene)
 
     def execute(self, context):
+        """
+        Executes the groups for this group.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         layergroups = scene.layergroups
         layers = self.layers
@@ -113,9 +133,23 @@ class SCENE_OT_namedlayer_group_remove(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Returns true if the context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return bool(context.scene)
 
     def execute(self, context):
+        """
+        Executes the groupgroups from the group.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         group_idx = self.group_idx
 
@@ -138,9 +172,23 @@ class SCENE_OT_namedlayer_toggle_visibility(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Return the number of the context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.scene and (context.area.spaces.active.type == 'VIEW_3D')
 
     def execute(self, context):
+        """
+        Execute the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         layer_cont = context.area.spaces.active if self.use_spacecheck else context.scene
         layer_idx = self.layer_idx
@@ -167,6 +215,14 @@ class SCENE_OT_namedlayer_toggle_visibility(bpy.types.Operator):
         return {'FINISHED'}
 
     def invoke(self, context, event):
+        """
+        Execute the given event.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         self.extend = event.shift
         return self.execute(context)
 
@@ -181,9 +237,23 @@ class SCENE_OT_namedlayer_move_to_layer(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Poll the number of the given context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.scene
 
     def execute(self, context):
+        """
+        Execute the layers.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layer_idx = self.layer_idx
         scene = context.scene
 
@@ -201,6 +271,14 @@ class SCENE_OT_namedlayer_move_to_layer(bpy.types.Operator):
         return {'FINISHED'}
 
     def invoke(self, context, event):
+        """
+        Execute the given event.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         self.extend = event.shift
         return self.execute(context)
 
@@ -216,9 +294,23 @@ class SCENE_OT_namedlayer_toggle_wire(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Return the number of the context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.scene and (context.area.spaces.active.type == 'VIEW_3D')
 
     def execute(self, context):
+        """
+        Execute the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         layer_idx = self.layer_idx
         use_wire = self.use_wire
@@ -256,9 +348,23 @@ class SCENE_OT_namedlayer_lock_all(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Return the number of the context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.scene and (context.area.spaces.active.type == 'VIEW_3D')
 
     def execute(self, context):
+        """
+        Executes the view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         view_3d = context.area.spaces.active
         layer_idx = self.layer_idx
@@ -298,9 +404,23 @@ class SCENE_OT_namedlayer_select_objects_by_layer(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Return the number of the context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.scene and (context.area.spaces.active.type == 'VIEW_3D')
 
     def execute(self, context):
+        """
+        Executes the view view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         view_3d = context.area.spaces.active
         select_obj = self.select_obj
@@ -327,6 +447,14 @@ class SCENE_OT_namedlayer_select_objects_by_layer(bpy.types.Operator):
         return {'FINISHED'}
 
     def invoke(self, context, event):
+        """
+        Execute the event.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         self.extend = event.shift
         self.active = event.ctrl
         return self.execute(context)
@@ -341,9 +469,23 @@ class SCENE_OT_namedlayer_show_all(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
+        """
+        Return the number of the context.
+
+        Args:
+            cls: (todo): write your description
+            context: (dict): write your description
+        """
         return context.scene and (context.area.spaces.active.type == 'VIEW_3D')
 
     def execute(self, context):
+        """
+        Execute the view view.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         view_3d = context.area.spaces.active
         show = self.show
@@ -375,10 +517,24 @@ class SCENE_PT_namedlayer_layers(bpy.types.Panel):
 
     @classmethod
     def poll(self, context):
+        """
+        Return the number of the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         return ((getattr(context, "mode", 'EDIT_MESH') not in EDIT_MODES) and
                 (context.area.spaces.active.type == 'VIEW_3D'))
 
     def draw_header(self, context):
+        """
+        Draw the header
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         row = self.layout.row()
         row.scale_x = 0.7
         row.scale_y = 0.7
@@ -404,6 +560,13 @@ class SCENE_PT_namedlayer_layers(bpy.types.Panel):
 
 
     def draw(self, context):
+        """
+        Draw the view
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         view_3d = context.area.spaces.active
         actob = context.object
@@ -543,6 +706,20 @@ class SCENE_PT_namedlayer_layers(bpy.types.Panel):
 
 class SCENE_UL_namedlayer_groups(UIList):
     def draw_item(self, context, layout, data, item, icon, active_data, active_propname, index):
+        """
+        Draw a single item.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+            layout: (todo): write your description
+            data: (todo): write your description
+            item: (todo): write your description
+            icon: (todo): write your description
+            active_data: (bool): write your description
+            active_propname: (str): write your description
+            index: (int): write your description
+        """
         layer_group = item
 
         # check for lock camera and layer is active
@@ -587,10 +764,24 @@ class SCENE_PT_namedlayer_groups(bpy.types.Panel):
 
     @classmethod
     def poll(self, context):
+        """
+        Return the number of the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         return ((getattr(context, "mode", 'EDIT_MESH') not in EDIT_MODES) and
                 (context.area.spaces.active.type == 'VIEW_3D'))
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         scene = context.scene
         group_idx = scene.layergroups_index
 
@@ -608,6 +799,11 @@ class SCENE_PT_namedlayer_groups(bpy.types.Panel):
 
 
 def register():
+    """
+    Registers the layergroups.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
     bpy.types.Scene.layergroups = CollectionProperty(type=LayerGroup)
     # Unused, but this is needed for the TemplateList to work...
@@ -617,6 +813,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister the layergroups.
+
+    Args:
+    """
     bpy.app.handlers.scene_update_post.remove(check_init_data)
     del bpy.types.Scene.layergroups
     del bpy.types.Scene.layergroups_index

@@ -114,6 +114,13 @@ class ReloadAddonPreferences(bpy.types.AddonPreferences):
     )
 
     def draw(self, context):
+        """
+        Draw the layout objects
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         """:type: bpy.types.UILayout"""
         column = layout.column()
@@ -136,6 +143,12 @@ class ReloadAddonPreferences(bpy.types.AddonPreferences):
                      if addon.module in module_updated]
 
         def sort_func(name):
+            """
+            Sort the sort function.
+
+            Args:
+                name: (str): write your description
+            """
             if name in sys.modules:
                 return addon_utils.module_bl_info(sys.modules[name])['name']
             else:
@@ -160,10 +173,22 @@ class ReloadAddonPreferences(bpy.types.AddonPreferences):
 
     @classmethod
     def get_prefs(self):
+        """
+        Return a list of preferences.
+
+        Args:
+            self: (todo): write your description
+        """
         return bpy.context.user_preferences.addons[__name__].preferences
 
 
 def get_module_mtimes(module_name=None):
+    """
+    Return a list of all imported modules that module_name.
+
+    Args:
+        module_name: (str): write your description
+    """
     prefs = ReloadAddonPreferences.get_prefs()
     pattern = prefs.exclude_pattern
 
@@ -204,6 +229,11 @@ def get_module_mtimes(module_name=None):
 
 
 def check_update():
+    """
+    Check if the module has changed.
+
+    Args:
+    """
     global module_mtimes, prev_time
     updated = False
     if module_mtimes is None:
@@ -224,6 +254,13 @@ def check_update():
 
 
 def reload_addon(context, module_name):
+    """
+    Reloads the given module.
+
+    Args:
+        context: (list): write your description
+        module_name: (str): write your description
+    """
     addons = context.user_preferences.addons
     if module_name not in addons:
         return False
@@ -269,6 +306,12 @@ def reload_addon(context, module_name):
 
 
 def redraw_userprefs(context):
+    """
+    Redraw the currently running.
+
+    Args:
+        context: (dict): write your description
+    """
     if context.user_preferences.active_section == 'ADDONS':
         for win in context.window_manager.windows:
             for area in win.screen.areas:
@@ -281,6 +324,13 @@ class WM_OT_addon_check_update(bpy.types.Operator):
     bl_label = 'Check Update'
 
     def execute(self, context):
+        """
+        Execute the contents of a - line.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         check_update()
         redraw_userprefs(context)
         return {'FINISHED'}
@@ -294,6 +344,13 @@ class WM_OT_addon_reload(bpy.types.Operator):
     module = bpy.props.StringProperty(name='Module Name')
 
     def execute(self, context):
+        """
+        Execute the load balancer.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         if not reload_addon(context, self.module):
             return {'CANCELLED'}
 
@@ -307,6 +364,13 @@ class WM_OT_addon_reload_all(bpy.types.Operator):
     bl_description = 'Reload updated add-ons'
 
     def execute(self, context):
+        """
+        Execute the load balancer addon.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         addons = context.user_preferences.addons
         check_update()
         result = False
@@ -322,6 +386,12 @@ class WM_OT_addon_reload_all(bpy.types.Operator):
 
 @bpy.app.handlers.persistent
 def scene_update_pre(scene):
+    """
+    Updates the scene
+
+    Args:
+        scene: (str): write your description
+    """
     global module_mtimes, prev_time
 
     context = bpy.context
@@ -348,6 +418,13 @@ def scene_update_pre(scene):
 
 
 def userprefs_header_draw(self, context):
+    """
+    Draw layout
+
+    Args:
+        self: (todo): write your description
+        context: (dict): write your description
+    """
     layout = self.layout
     if context.user_preferences.active_section == 'ADDONS':
         layout.operator('wm.addon_reload_all', text='Reload',
@@ -359,6 +436,13 @@ class INFO_MT_help_addon_reload(bpy.types.Menu):
     bl_label = 'Reload Add-on'
 
     def draw(self, context):
+        """
+        Draw the addon of the given addon.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         check_update()
 
@@ -367,6 +451,12 @@ class INFO_MT_help_addon_reload(bpy.types.Menu):
                         if addon.module in module_updated]
 
         def sort_func(name):
+            """
+            Sort the sort function.
+
+            Args:
+                name: (str): write your description
+            """
             if name in sys.modules:
                 return addon_utils.module_bl_info(sys.modules[name])['name']
             else:
@@ -387,6 +477,13 @@ class INFO_MT_help_addon_reload(bpy.types.Menu):
 
 
 def info_menu_draw(self, context):
+    """
+    Draws context
+
+    Args:
+        self: (todo): write your description
+        context: (todo): write your description
+    """
     layout = self.layout
     layout.menu('INFO_MT_help_addon_reload', icon='FILE_REFRESH')
 
@@ -401,6 +498,11 @@ classes = [
 
 
 def register():
+    """
+    Registers the plugin classes.
+
+    Args:
+    """
     for cls in classes:
         bpy.utils.register_class(cls)
     bpy.app.handlers.scene_update_pre.append(scene_update_pre)
@@ -409,6 +511,11 @@ def register():
 
 
 def unregister():
+    """
+    Unregister a plugin.
+
+    Args:
+    """
     bpy.types.USERPREF_HT_header.remove(userprefs_header_draw)
     bpy.types.INFO_MT_help.remove(info_menu_draw)
     bpy.app.handlers.scene_update_pre.remove(scene_update_pre)

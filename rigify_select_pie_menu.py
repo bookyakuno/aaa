@@ -60,6 +60,13 @@ class rigify_select_Prefs(bpy.types.AddonPreferences):
 
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         layout.prop(context.scene, "Enable_Tab_01", text="Info", icon="QUESTION")
         if context.scene.Enable_Tab_01:
@@ -89,6 +96,13 @@ class rigify_select_x(Menu):
 	bl_label = "Add Modifier"
 
 	def draw(self, context):
+     """
+     Draw menu
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 		pie = layout.menu_pie()
 
@@ -121,6 +135,11 @@ class rigify_select_x(Menu):
 ############
 addon_keymaps = []
 def register():
+    """
+    Registers a framework.
+
+    Args:
+    """
 	bpy.utils.register_class(rigify_select_x)
 
 
@@ -137,6 +156,11 @@ def register():
 # Unregister #
 ##############
 def unregister():
+    """
+    Unregister all addon from the manager.
+
+    Args:
+    """
 	bpy.utils.unregister_class(rigify_select_x)
 
 	### Keymap ###

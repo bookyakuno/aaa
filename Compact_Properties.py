@@ -55,11 +55,33 @@ class compact_prop(bpy.types.Operator):
     bl_idname = "object.compact_prop"
     bl_label = "Compact Properties"
     def execute(self, context):
+        """
+        Execute the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         return {'FINISHED'}
     def invoke(self, context, event):
+        """
+        Invoke the underlying event.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         dpi_value = bpy.context.user_preferences.system.dpi
         return context.window_manager.invoke_props_dialog(self, width=dpi_value*6, height=300)
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         mp = DATA_PT_modifiers(context)
         ob = context.object
         layout = self.layout
@@ -147,6 +169,11 @@ class compact_prop(bpy.types.Operator):
 
 addon_keymaps = []
 def register():
+    """
+    Register a new addon.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
     wm = bpy.context.window_manager
     km = wm.keyconfigs.addon.keymaps.new(name = '3D View', space_type = 'VIEW_3D')
@@ -157,6 +184,11 @@ def register():
     addon_keymaps.append((km, kmi))
 
 def unregister():
+    """
+    Removes all addon.
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)
     # handle the keymap
     for km, kmi in addon_keymaps:

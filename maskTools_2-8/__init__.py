@@ -49,6 +49,13 @@ class MASKTOOLS_AddonPreferences(bpy.types.AddonPreferences):
 	bl_idname = __name__
 
 	def draw(self, context):
+     """
+     Draw the layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 
 		col = layout.column(align=True)
@@ -93,6 +100,13 @@ class MASKTOOLS_AddonPreferences(bpy.types.AddonPreferences):
 
 
 	def execute(self,context):
+     """
+     Execute the context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		return {'FINISHED'}
 
 
@@ -118,6 +132,13 @@ class MaskToolsPanel(Panel):
 
 
 	def draw(self, context):
+     """
+     Draw layout
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		layout = self.layout
 
 		###############################################################
@@ -385,6 +406,14 @@ addon_keymaps = []
 ################################################################
 # # # # # # # # プロパティの指定に必要なもの
 def kmi_props_setattr(kmi_props, attr, value):
+    """
+    Set kmi_props_props
+
+    Args:
+        kmi_props: (todo): write your description
+        attr: (str): write your description
+        value: (todo): write your description
+    """
 	try:
 		setattr(kmi_props, attr, value)
 	except AttributeError:
@@ -399,6 +428,11 @@ def kmi_props_setattr(kmi_props, attr, value):
 
 
 def register():
+    """
+    Register kmi classes
+
+    Args:
+    """
 
 	for cls in classes:
 		bpy.utils.register_class(cls)
@@ -492,6 +526,11 @@ def register():
 	# add_hotkey()
 
 def unregister():
+    """
+    Removes all addon from the registry.
+
+    Args:
+    """
 	for cls in classes:
 		bpy.utils.unregister_class(cls)
 

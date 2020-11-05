@@ -34,6 +34,13 @@ class root_group_z(bpy.types.Operator):
 	bl_description = "Add object with no group to '_root'."
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 
@@ -131,6 +138,13 @@ class new_group_z(bpy.types.Operator):
 	bl_description = "all remove and Create new group."
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		x0 = bpy.context.scene.layers[0]
@@ -216,6 +230,13 @@ class all_remove_group_z(bpy.types.Operator):
 	bl_description = "all remove group.('object nothing group' data leave!! Better 'RMB > Delete Group')"
 
 	def execute(self, context):
+     """
+     Executes the command.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 
 
 		x0 = bpy.context.scene.layers[0]
@@ -302,6 +323,13 @@ class move_group_z(bpy.types.Operator):
 	bl_description = "move to active group.(all remove and move to active object group)"
 
 	def execute(self, context):
+     """
+     Execute a context.
+
+     Args:
+         self: (todo): write your description
+         context: (dict): write your description
+     """
 		#  アクティブオブジェクトの定義
 		active = bpy.context.active_object
 		#  一度、アクティブの選択を解除し、リネームする
@@ -325,6 +353,13 @@ class move_group_z(bpy.types.Operator):
 
 
 def group_layer_menu(self, context):
+    """
+    Group menu menu menu.
+
+    Args:
+        self: (todo): write your description
+        context: (dict): write your description
+    """
 
 	space = context.space_data
 	layout = self.layout
@@ -404,6 +439,11 @@ def group_layer_menu(self, context):
 
 
 def register():
+    """
+    Registers the layer.
+
+    Args:
+    """
 	# bpy.utils.register_class(root_group_z)
 	# bpy.utils.register_class(new_group_z)
 	# bpy.utils.register_class(move_group_z)
@@ -418,6 +458,11 @@ def register():
 
 
 def unregister():
+    """
+    Removes the layer from the group.
+
+    Args:
+    """
 	# bpy.utils.unregister_class(root_group_z)
 	# bpy.utils.unregister_class(new_group_z)
 	# bpy.utils.unregister_class(move_group_z)

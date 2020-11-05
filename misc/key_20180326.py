@@ -2,6 +2,14 @@ import bpy
 import os
 
 def kmi_props_setattr(kmi_props, attr, value):
+    """
+    Set kmi_props_props
+
+    Args:
+        kmi_props: (todo): write your description
+        attr: (str): write your description
+        value: (todo): write your description
+    """
     try:
         setattr(kmi_props, attr, value)
     except AttributeError:

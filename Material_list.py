@@ -44,6 +44,11 @@ set_material_name_z = StringProperty(
 
 
 def c_need_of_viewport_colors():
+    """
+    Return true if the viewport can be displayed.
+
+    Args:
+    """
     # check the context where using Viewport color and friends are needed
     # Cycles and BI are supported
     if c_render_engine("Cycles"):
@@ -65,6 +70,13 @@ class VIEW3D_MT_select_material_xx(bpy.types.Menu):
     bl_options = {"REGISTER","UNDO"}
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         layout.operator_context = 'INVOKE_REGION_WIN'
 
@@ -102,6 +114,13 @@ class ApplyMaterial(bpy.types.Operator):
     mat_to_assign = bpy.props.StringProperty(default="")
 
     def execute(self, context):
+        """
+        Executes the context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
         if context.object.mode == 'EDIT':
             obj = context.object
@@ -160,6 +179,13 @@ class new_mat(bpy.types.Operator):
     bl_options = {"REGISTER","UNDO"}
 
     def execute(self, context):
+        """
+        Execute the rendering.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
 
 
         ob = bpy.context.active_object
@@ -190,6 +216,13 @@ class MaterialListMenu_z(bpy.types.Menu):
     bl_label = "Material_list_xz"
 
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         col = layout.column(align=True)
         ################################################################
@@ -231,6 +264,13 @@ class ExtraMaterialList_PT_z(Panel):
     bl_context = "material"
     bl_label = "mat List"
     def draw(self, context):
+        """
+        Draw layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         cs = context.scene
         sdata = context.space_data
@@ -260,6 +300,13 @@ class del_mat(Operator):
     bl_options = {"REGISTER","UNDO"}
 
     def execute(self, context):
+        """
+        Execute a context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         for material in bpy.context.active_object.data.materials:
             material.user_clear()
             bpy.data.materials.remove(material)
@@ -273,6 +320,13 @@ class del_0_mat(Operator):
     bl_options = {"REGISTER","UNDO"}
 
     def execute(self, context):
+        """
+        Execute a single context.
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         for material in bpy.data.materials:
             if not material.users:
                 bpy.data.materials.remove(material)
@@ -287,6 +341,11 @@ class del_0_mat(Operator):
 #
 
 def register():
+    """
+    Registers a new addon.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
 
     wm = bpy.context.window_manager
@@ -297,6 +356,11 @@ def register():
         kmi.properties.name = "object.material_list_menu_z"
 
 def unregister():
+    """
+    Unregister the addon.
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)
 
     wm = bpy.context.window_manager

@@ -14,6 +14,13 @@ class misc_pie(Menu):
     bl_label = "Pie Misc"
 
     def draw(self, context):
+        """
+        Draw menu
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -44,6 +51,13 @@ class misc_edit_pie(Menu):
     bl_label = "Pie Misc Edit"
 
     def draw(self, context):
+        """
+        Draw the layout
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         layout = self.layout
         pie = layout.menu_pie()
         #4 - LEFT
@@ -122,6 +136,13 @@ class freeze_transformation(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
+        """
+        Execute operations
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+        """
         bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
 
         return {'FINISHED'}

@@ -49,6 +49,12 @@ class rotate_gesture(bpy.types.Operator):
 #     value_fix_z = 0
 #     nd = 0
     def vdist(self):
+        """
+        Calculate area area of the region.
+
+        Args:
+            self: (todo): write your description
+        """
       area=bpy.context.window.screen.areas[0]
       for x in bpy.context.window.screen.areas:
           if x.type=='VIEW_3D': area=x
@@ -57,6 +63,14 @@ class rotate_gesture(bpy.types.Operator):
       return area.spaces[0].region_3d.view_distance
 
     def modal(self, context, event):
+        """
+        Rotate the context
+
+        Args:
+            self: (todo): write your description
+            context: (dict): write your description
+            event: (todo): write your description
+        """
 
 # 説明
         context.area.header_text_set('Mouse wheel Up/Down or + - key = 45, Shift +wheel = -45, ZXCY = & AXIS,  Shift + ZXCY = -45 & AXIS')
@@ -168,6 +182,14 @@ class rotate_gesture(bpy.types.Operator):
         return {'RUNNING_MODAL'}
 
     def invoke(self, context, event):
+        """
+        Invoke the event.
+
+        Args:
+            self: (todo): write your description
+            context: (todo): write your description
+            event: (todo): write your description
+        """
         if context.object:
 
 
@@ -202,6 +224,11 @@ class rotate_gesture(bpy.types.Operator):
 addon_keymaps = []
 
 def register():
+    """
+    Register the addon.
+
+    Args:
+    """
     bpy.utils.register_module(__name__)
 
 #addon_keymaps = [] #put on out of register()
@@ -215,6 +242,11 @@ def register():
     addon_keymaps.append((km, kmi))
 
 def unregister():
+    """
+    Removes all addon.
+
+    Args:
+    """
     bpy.utils.unregister_module(__name__)
     # handle the keymap
     for km, kmi in addon_keymaps:
